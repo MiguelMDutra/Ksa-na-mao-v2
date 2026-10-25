@@ -3,6 +3,7 @@ import { DatabaseModels } from "./index";
 import { validateHasNoSpaces } from "@src/core/util/noSpaces";
 import { validateHasSpecialCharacter } from "@src/core/util/specialCharacters";
 import { goodPassword } from "@src/core/util/goodPassword";
+import bcrypt from "bcrypt";
 
 class User extends Model {
   declare userId: number;
@@ -197,6 +198,24 @@ export default (sequelize: Sequelize) => {
       sequelize,
       modelName: "User",
       paranoid: true,
+      hooks: {
+        beforeSave: async (user) => {
+          if (user.changed("password")) {
+            user.password = await bcrypt.hash(user.password, 12);
+            user.passwordUpdatedAt = new Date();
+          }
+        },
+
+        beforeUpdate: (user) => {
+          if (user.changed("email")) {
+            user.emailUpdatedAt = new Date();
+          }
+
+          if (user.changed("username")) {
+            user.usernameUpdatedAt = new Date();
+          }
+        },
+      },
     },
   );
   return User;
