@@ -1,0 +1,10 @@
+// eslint-disable-next-line
+import * as dotenv from "dotenv";
+import app from "@src/app";
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  // eslint-disable-next-line
+  console.log("Listening!!!!!" + PORT);
+});

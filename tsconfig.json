@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@apis/*": ["./src/Apis/*"],
+      "@core/*": ["./src/core/*"],
+      "@models": ["./src/database/models/index.ts"],
+      "@modules": ["./src/modules"]
+    }
+  }
+}
