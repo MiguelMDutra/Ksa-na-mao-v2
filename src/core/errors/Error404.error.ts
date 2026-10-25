@@ -3,7 +3,6 @@ import NotFound from "./NotFound.error";
 const notFound = new NotFound("Página não encontrada");
 
 export function Error404(
-  err: Error,
   req: Request,
   res: Response,
   // eslint-disable-next-line
