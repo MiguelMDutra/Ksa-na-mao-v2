@@ -5,6 +5,7 @@
       "@apis/*": ["./src/Apis/*"],
       "@core/*": ["./src/core/*"],
       "@models": ["./src/database/models/index.ts"],
+      "@allModels/*": ["./src/database/models/*"],
       "@modules/*": ["./src/modules/*"]
     }
   }

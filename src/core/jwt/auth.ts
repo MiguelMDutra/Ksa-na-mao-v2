@@ -1,7 +1,7 @@
-import { UserFindOne } from "../types/User.types";
+import { userBasics } from "../types/User.types";
 import jwt from "jsonwebtoken";
 
-export function auth(user: UserFindOne): string {
+export function auth(user: userBasics): string {
   return jwt.sign(user!, process.env.JSONKEY as string, {
     expiresIn: "1h",
   });

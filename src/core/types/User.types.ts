@@ -7,20 +7,20 @@ export interface signUpData {
 export interface getOneUserData {
   userId: number;
   username: string;
-  pfp: string;
+  pfp?: string;
   name?: string;
-  bio: string;
+  bio?: string;
   createdAt: string;
 }
 
 export interface searchUsers {
   userId: number;
   username: string;
-  pfp: string;
+  pfp?: string;
   name?: string;
 }
 
-export type UserAll = {
+export interface userAll {
   userId: number;
   username: string;
   email: string;
@@ -35,9 +35,9 @@ export type UserAll = {
   passwordUpdatedAt: Date | null;
   emailUpdatedAt: Date | null;
   usernameUpdatedAt: Date | null;
-};
+}
 
-export type UserFindOne = {
+export interface userFindOne {
   userId: number;
   username: string;
   email: string;
@@ -47,4 +47,13 @@ export type UserFindOne = {
   role: string;
   createdAt: Date;
   updatedAt: Date;
-};
+}
+
+export interface userBasics {
+  userId: number;
+  email: string;
+}
+
+export interface userBasicsPassword extends userBasics {
+  password: string;
+}
