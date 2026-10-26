@@ -10,34 +10,30 @@ class UserRepo {
     return user !== null;
   }
 
-  async signUp(userData: signUpData): Promise<{ user: UserFindOne } | null> {
-    try {
-      return await sequelize.transaction(async (t) => {
-        const [user, created] = await userModel.findOrCreate({
-          where: {
-            email: userData.email,
-          },
-          defaults: {
-            email: userData.email,
-            password: userData.password,
-            username: userData.username,
-          },
-          transaction: t,
-        });
-
-        //const data = {
-        // userId: user.id,
-        //  name: "Primeiro estoque!",
-        //};
-
-        //await pantryServices.createPantryAndShoppingList(data, t);
-
-        if (created) return { user };
-        else return null;
+  async signUp(userData: signUpData): Promise<UserFindOne | null> {
+    return await sequelize.transaction(async (t) => {
+      const [user, created] = await userModel.findOrCreate({
+        where: {
+          email: userData.email,
+        },
+        defaults: {
+          email: userData.email,
+          password: userData.password,
+          username: userData.username,
+        },
+        transaction: t,
       });
-    } catch (error) {
-      throw error;
-    }
+
+      //Const data = {
+      // UserId: user.id,
+      //  Name: "Primeiro estoque!",
+      //};
+
+      //Await pantryServices.createPantryAndShoppingList(data, t);
+
+      if (created) return user;
+      else return null;
+    });
   }
 }
 

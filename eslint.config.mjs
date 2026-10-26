@@ -42,7 +42,6 @@ export default defineConfig(
       //typescript
       "@typescript-eslint/no-unused-vars": ["warn"],
       "@typescript-eslint/array-type": "error",
-      "@typescript-eslint/class-methods-use-this": "error",
       "@typescript-eslint/explicit-function-return-type": "error",
       "@typescript-eslint/no-unsafe-return": "error",
     },
