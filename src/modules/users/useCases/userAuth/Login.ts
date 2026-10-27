@@ -4,17 +4,17 @@ import auth from "@src/core/jwt/auth";
 import { signUpData } from "@src/core/types/User.types";
 import bcrypt from "bcrypt";
 import BadRequest from "@src/core/errors/BadRequest.error";
-import UserRepository from "../repository/User.repository";
-const ur = new UserRepository();
+import UserHelper from "../../repository/User.HELPER";
+const uh = new UserHelper();
 
 class Login {
   static async execute(userData: signUpData): Promise<string> {
     if (!userData.email || !userData.password) {
       throw new BadRequest("Voce precisa do email e senha para fazer login");
     }
-    const user = await ur.emailExists(userData.email);
+    const user = await uh.emailExists(userData.email);
     if (!user) throw new NotFound("Não há nenhuma conta com esse email.");
-    const userPassword = await ur.userAll(user.userId);
+    const userPassword = await uh.userAll(user.userId);
 
     const match = await bcrypt.compare(
       userData.password,

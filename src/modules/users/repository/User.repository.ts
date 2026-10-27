@@ -1,43 +1,11 @@
 import models from "@models";
 import NotFound from "@src/core/errors/NotFound.error";
-import {
-  signUpData,
-  userBasics,
-  userBasicsPassword,
-} from "@src/core/types/User.types";
+import { signUpData, userBasics, userUpdate } from "@src/core/types/User.types";
 
 const sequelize = models.sequelize;
 const userModel = models.user;
 
 class UserRepo {
-  async userAll(id: number): Promise<userBasicsPassword> {
-    const user = await userModel.findOne({ where: { userId: id } });
-
-    if (!user) {
-      throw new NotFound("Usuario não encontrado.");
-    }
-
-    return user;
-  }
-
-  async usernameExists(username: string): Promise<boolean> {
-    const user = await userModel.findOne({ where: { username: username } });
-    return user !== null;
-  }
-
-  async emailExists(email: string): Promise<userBasics | null> {
-    const user = await userModel.findOne({
-      where: {
-        email: email,
-      },
-    });
-    if (!user) return null;
-    return {
-      userId: user.userId,
-      email: user.email,
-    };
-  }
-
   async signUp(userData: signUpData): Promise<userBasics | null> {
     return await sequelize.transaction(async (t) => {
       const [user, created] = await userModel.findOrCreate({
@@ -66,6 +34,19 @@ class UserRepo {
         };
       } else return null;
     });
+  }
+
+  async updateAccount(userId: number, data: userUpdate): Promise<boolean> {
+    const user = await userModel.findOne({ where: { userId } });
+
+    if (!user) {
+      throw new NotFound("Usuário não encontrado");
+    }
+
+    user.set(data);
+    await user.save();
+
+    return true;
   }
 }
 
