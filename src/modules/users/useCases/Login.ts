@@ -3,11 +3,15 @@ import Unauthorized from "@src/core/errors/Unauthorized.error";
 import auth from "@src/core/jwt/auth";
 import { signUpData } from "@src/core/types/User.types";
 import bcrypt from "bcrypt";
+import BadRequest from "@src/core/errors/BadRequest.error";
 import UserRepository from "../repository/User.repository";
 const ur = new UserRepository();
 
 class Login {
   static async execute(userData: signUpData): Promise<string> {
+    if (!userData.email || !userData.password) {
+      throw new BadRequest("Voce precisa do email e senha para fazer login");
+    }
     const user = await ur.emailExists(userData.email);
     if (!user) throw new NotFound("Não há nenhuma conta com esse email.");
     const userPassword = await ur.userAll(user.userId);
