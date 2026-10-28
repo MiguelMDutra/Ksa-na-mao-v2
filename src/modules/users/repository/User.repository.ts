@@ -4,6 +4,7 @@ import { signUpData, userBasics, userUpdate } from "@src/core/types/User.types";
 
 const sequelize = models.sequelize;
 const userModel = models.user;
+const userChangeTokenModel = models.userChangeToken;
 
 class UserRepo {
   async signUp(userData: signUpData): Promise<userBasics | null> {
@@ -47,6 +48,32 @@ class UserRepo {
     await user.save();
 
     return true;
+  }
+
+  wasteToken(
+    updateData: { email?: string; password?: string },
+    userId: number,
+    tokenId: number,
+  ): object {
+    return sequelize.transaction(async (t) => {
+      await userModel.update(updateData, {
+        where: { userId: userId },
+        transaction: t,
+        individualHooks: true,
+      });
+
+      await userChangeTokenModel.update(
+        { used: true },
+        {
+          where: { id: tokenId },
+          transaction: t,
+        },
+      );
+
+      return {
+        message: "Conta atualizada com sucesso!",
+      };
+    });
   }
 }
 

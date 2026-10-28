@@ -25,18 +25,25 @@ class UserHelper {
     return user.get({ plain: true }) as Pick<userAllNoPassword, K>;
   }
 
-  async userAll(id: number): Promise<userBasicsPassword> {
-    const user = await userModel.findOne({ where: { userId: id } });
+  async findByIdPassword(id: number): Promise<userBasicsPassword> {
+    const user = await userModel.findOne({
+      where: { userId: id },
+    });
 
     if (!user) {
       throw new NotFound("Usuario não encontrado.");
     }
 
-    return user;
+    return user.get({ plain: true }) as userBasicsPassword;
   }
 
   async usernameExists(username: string): Promise<boolean> {
     const user = await userModel.findOne({ where: { username: username } });
+    return user !== null;
+  }
+
+  async userIdExists(userId: number): Promise<boolean> {
+    const user = await userModel.findOne({ where: { userId: userId } });
     return user !== null;
   }
 
