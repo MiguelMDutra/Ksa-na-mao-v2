@@ -14,7 +14,7 @@ class Login {
     }
     const user = await uh.emailExists(userData.email);
     if (!user) throw new NotFound("Não há nenhuma conta com esse email.");
-    const userPassword = await uh.userAll(user.userId);
+    const userPassword = await uh.findByIdPassword(user.userId);
 
     const match = await bcrypt.compare(
       userData.password,
