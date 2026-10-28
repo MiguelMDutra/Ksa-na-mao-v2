@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import UpdateAccount from "../useCases/userAccount/UpdateAccount";
 import SendEmail from "../useCases/userAccount/SendEmail";
 import ChangeEmailOrPasswordToken from "../useCases/userAccount/ChangeEmailOrPasswordToken";
-import UpdatePassword from "../useCases/userAccount/updatePassword";
+import UpdatePassword from "../useCases/userAccount/UpdatePassword";
 import DeactivateAccount from "../useCases/userAccount/DeactivateAccount";
 
 class UserUpdate {

@@ -14,6 +14,15 @@ class UpdatePassword {
     },
     userId: number,
   ): Promise<object> {
+    if (
+      !data ||
+      typeof data.password !== "string" ||
+      !data.password ||
+      typeof data.newPassword !== "string" ||
+      !data.newPassword
+    ) {
+      throw new BadRequest("Informe a senha atual e a nova senha.");
+    }
     const user = await uh.findByIdPassword(userId);
 
     const isTheSamePassword = await bcrypt.compare(
