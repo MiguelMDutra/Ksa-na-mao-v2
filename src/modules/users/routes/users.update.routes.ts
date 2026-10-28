@@ -12,26 +12,36 @@ R.patch(
   (req: Request, res: Response, next: NextFunction) => {
     userUpdate.updateBasics(req, res, next);
   },
-  R.get(
-    "/update-email",
-    verify,
-    (req: Request, res: Response, next: NextFunction) => {
-      userUpdate.updateEmail(req, res, next);
-    },
-  ),
-  R.get(
-    "/forgot-password",
-    verify,
-    (req: Request, res: Response, next: NextFunction) => {
-      userUpdate.forgotPassword(req, res, next);
-    },
-  ),
-  R.patch(
-    "/change-with-token/:token",
-    verify,
-    (req: Request, res: Response, next: NextFunction) => {
-      userUpdate.changeThroughToken(req, res, next);
-    },
-  ),
 );
+
+R.patch(
+  "/patch-password",
+  verify,
+  (req: Request, res: Response, next: NextFunction) => {
+    userUpdate.updatePassword(req, res, next);
+  },
+);
+
+R.post(
+  "/update-email",
+  verify,
+  (req: Request, res: Response, next: NextFunction) => {
+    userUpdate.updateEmail(req, res, next);
+  },
+);
+
+R.post(
+  "/forgot-password",
+  (req: Request, res: Response, next: NextFunction) => {
+    userUpdate.forgotPassword(req, res, next);
+  },
+);
+
+R.patch(
+  "/change-with-token/:token",
+  (req: Request, res: Response, next: NextFunction) => {
+    userUpdate.changeThroughToken(req, res, next);
+  },
+);
+
 export default R;

@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import UpdateAccount from "../useCases/userAccount/UpdateAccount";
 import SendEmail from "../useCases/userAccount/SendEmail";
 import ChangeEmailOrPasswordToken from "../useCases/userAccount/ChangeEmailOrPasswordToken";
+import UpdatePassword from "../useCases/userAccount/updatePassword";
 
 class UserUpdate {
   async updateBasics(
@@ -14,6 +15,22 @@ class UserUpdate {
       const user = req.user;
       const { userId } = user!;
       const response = await UpdateAccount.execute(updateData, userId);
+      res.status(200).json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async updatePassword(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const data = req.body;
+      const user = req.user;
+      const { userId } = user!;
+      const response = await UpdatePassword.execute(data, userId);
       res.status(200).json(response);
     } catch (error) {
       next(error);

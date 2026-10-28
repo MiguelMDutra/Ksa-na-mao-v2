@@ -50,6 +50,16 @@ class UserRepo {
     return true;
   }
 
+  async updatePassword(newPassword: string, userId: number): Promise<void> {
+    await userModel.update(
+      { password: newPassword },
+      {
+        where: { userId: userId },
+        individualHooks: true,
+      },
+    );
+  }
+
   wasteToken(
     updateData: { email?: string; password?: string },
     userId: number,
