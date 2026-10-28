@@ -32,6 +32,7 @@ R.post(
 
 R.post(
   "/forgot-password",
+  verify,
   (req: Request, res: Response, next: NextFunction) => {
     userUpdate.forgotPassword(req, res, next);
   },
@@ -39,8 +40,17 @@ R.post(
 
 R.patch(
   "/change-with-token/:token",
+  verify,
   (req: Request, res: Response, next: NextFunction) => {
     userUpdate.changeThroughToken(req, res, next);
+  },
+);
+
+R.delete(
+  "/deactivate-account",
+  verify,
+  (req: Request, res: Response, next: NextFunction) => {
+    userUpdate.deactivateAccount(req, res, next);
   },
 );
 

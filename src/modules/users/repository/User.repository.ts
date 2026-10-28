@@ -85,6 +85,12 @@ class UserRepo {
       };
     });
   }
+
+  async DeactivateAccount(userId: number): Promise<void> {
+    await userModel.destroy({
+      where: { userId: userId },
+    });
+  }
 }
 
 export default UserRepo;

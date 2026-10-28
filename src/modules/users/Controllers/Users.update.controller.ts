@@ -3,6 +3,7 @@ import UpdateAccount from "../useCases/userAccount/UpdateAccount";
 import SendEmail from "../useCases/userAccount/SendEmail";
 import ChangeEmailOrPasswordToken from "../useCases/userAccount/ChangeEmailOrPasswordToken";
 import UpdatePassword from "../useCases/userAccount/updatePassword";
+import DeactivateAccount from "../useCases/userAccount/DeactivateAccount";
 
 class UserUpdate {
   async updateBasics(
@@ -85,6 +86,22 @@ class UserUpdate {
         newData,
         tokenString,
       );
+      res.status(200).json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async deactivateAccount(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const user = req.user;
+      const { userId } = user!;
+      const { email } = req.body;
+      const response = await DeactivateAccount.execute(email, userId);
       res.status(200).json(response);
     } catch (error) {
       next(error);
