@@ -64,7 +64,7 @@ class UserUpdate {
       const user = req.user;
       const { userId } = user!;
       const response = await SendEmail.execute(userId, type);
-      res.status(200).json(response);
+      res.status(201).json(response);
     } catch (error) {
       next(error);
     }

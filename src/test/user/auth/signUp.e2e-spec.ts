@@ -2,7 +2,7 @@ import request from "supertest";
 import test, { before, describe } from "node:test";
 import app from "@src/app";
 import assert from "node:assert";
-import { clearDatabase } from "../helper/clearDataBase";
+import { clearDatabase } from "../../helper/clearDataBase";
 
 describe("SignUp user", () => {
   before(async () => {

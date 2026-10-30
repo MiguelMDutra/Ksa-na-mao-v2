@@ -60,12 +60,12 @@ class UserRepo {
     );
   }
 
-  wasteToken(
+  async wasteToken(
     updateData: { email?: string; password?: string },
     userId: number,
     tokenId: number,
-  ): object {
-    return sequelize.transaction(async (t) => {
+  ): Promise<object> {
+    return await sequelize.transaction(async (t) => {
       await userModel.update(updateData, {
         where: { userId: userId },
         transaction: t,

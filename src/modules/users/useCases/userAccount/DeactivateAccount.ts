@@ -13,7 +13,7 @@ class DeactivateAccount {
       return { message: "Conta desativada com sucesso!" };
     }
 
-    throw new Forbidden("Você só pode desativar a sua conta!");
+    throw new Forbidden("O e-mail informado não corresponde à sua conta.");
   }
 }
 

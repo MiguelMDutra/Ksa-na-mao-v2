@@ -50,7 +50,7 @@ class ChangeEmailOrPasswordToken {
       throw new BadRequest("Esse campo não está aberto para mudanças.");
     }
 
-    const result = ur.wasteToken(updateData, userId, tokenId);
+    const result = await ur.wasteToken(updateData, userId, tokenId);
 
     return result;
   }

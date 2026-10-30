@@ -2,8 +2,8 @@ import request from "supertest";
 import test, { before, describe } from "node:test";
 import app from "@src/app";
 import assert from "node:assert";
-import { clearDatabase } from "../helper/clearDataBase";
-import createUser from "../helper/createUser";
+import { clearDatabase } from "../../helper/clearDataBase";
+import createUser from "../../helper/createUser";
 
 describe("Login user", { concurrency: false }, () => {
   before(async () => {
