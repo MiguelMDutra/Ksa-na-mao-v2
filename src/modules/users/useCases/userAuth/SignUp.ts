@@ -1,16 +1,20 @@
-import BadRequest from "@src/core/errors/BadRequest.error";
 import { signUpData } from "@src/core/types/User.types";
 import UserRepo from "@modules/users/repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
 import auth from "@src/core/jwt/auth";
+import Conflict from "@src/core/errors/Conflict.error";
+import BadRequest from "@src/core/errors/BadRequest.error";
 
 const ur = new UserRepo();
 const uh = new UserHelper();
 
 class SignUp {
   static async execute(userData: signUpData): Promise<string | undefined> {
+    if (!userData.email || !userData.password || !userData.username) {
+      throw new BadRequest("Algum dado está faltando.");
+    }
     if (await uh.usernameExists(userData.username)) {
-      throw new BadRequest("Esse username já está sendo usado.");
+      throw new Conflict("Esse username já está sendo usado.");
     }
 
     const user = await ur.signUp(userData);
@@ -19,7 +23,7 @@ class SignUp {
       const token = auth(user);
       return token;
     }
-    throw new BadRequest("O seu email já esta sendo usado.");
+    throw new Conflict("O seu email já esta sendo usado.");
   }
 }
 

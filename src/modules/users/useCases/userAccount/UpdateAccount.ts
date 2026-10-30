@@ -3,6 +3,7 @@ import { updateData } from "@src/core/types/User.types";
 import UserHelper from "../../repository/User.HELPER";
 const uh = new UserHelper();
 import UserRepo from "../../repository/User.repository";
+import Conflict from "@src/core/errors/Conflict.error";
 const ur = new UserRepo();
 
 class UpdateAccount {
@@ -25,7 +26,7 @@ class UpdateAccount {
       const usernameExists = await uh.usernameExists(data.username);
 
       if (usernameExists) {
-        throw new BadRequest("Esse username já está sendo usado.");
+        throw new Conflict("Esse username já está sendo usado.");
       }
     }
 

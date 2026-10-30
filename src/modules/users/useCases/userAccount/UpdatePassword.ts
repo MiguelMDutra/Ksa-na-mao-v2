@@ -3,6 +3,7 @@ import Forbidden from "@src/core/errors/Forbidden.error";
 import bcrypt from "bcrypt";
 import UserRepo from "../../repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
+import Conflict from "@src/core/errors/Conflict.error";
 const ur = new UserRepo();
 const uh = new UserHelper();
 
@@ -41,7 +42,7 @@ class UpdatePassword {
 
       return { message: "Conta atualizada com sucesso!" };
     }
-    throw new BadRequest("A senha é exatamente igual a sua original.");
+    throw new Conflict("A senha é exatamente igual a sua original.");
   }
 }
 
