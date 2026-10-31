@@ -16,19 +16,18 @@ describe("change email or password through token", () => {
       email: "miguelnewemail2@gmail.com",
     });
   });
+  testHelper(
+    "Reject account deactivation with incorrect email",
+    "emailincorreto@email.com",
+    "O e-mail informado não corresponde à sua conta.",
+    403,
+  );
 
   testHelper(
     "Deactivate account with correct email",
     "miguelnewemail2@gmail.com",
     "Conta desativada com sucesso!",
     200,
-  );
-
-  testHelper(
-    "Reject account deactivation with incorrect email",
-    "emailincorreto@email.com",
-    "O e-mail informado não corresponde à sua conta.",
-    403,
   );
 });
 

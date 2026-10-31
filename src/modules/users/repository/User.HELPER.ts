@@ -37,8 +37,10 @@ class UserHelper {
     return user.get({ plain: true }) as userBasicsPassword;
   }
 
-  async usernameExists(username: string): Promise<boolean> {
-    const user = await userModel.findOne({ where: { username: username } });
+  async usernameExists(username: string, scope?: string): Promise<boolean> {
+    const user = await userModel.scope(scope).findOne({
+      where: { username: username },
+    });
     return user !== null;
   }
 
@@ -47,8 +49,8 @@ class UserHelper {
     return user !== null;
   }
 
-  async emailExists(email: string): Promise<userBasics | null> {
-    const user = await userModel.findOne({
+  async emailExists(email: string, scope?: string): Promise<userBasics | null> {
+    const user = await userModel.scope(scope).findOne({
       where: {
         email: email,
       },
