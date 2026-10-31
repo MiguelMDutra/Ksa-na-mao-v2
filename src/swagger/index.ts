@@ -1,5 +1,6 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import { userSwagger } from "@src/modules/users/swagger/userSwagger";
+import { pantrySwagger } from "@src/modules/pantry/swagger/pantrySwagger";
 
 const options = {
   definition: {
@@ -19,6 +20,7 @@ const options = {
     },
     paths: {
       ...userSwagger.paths,
+      ...pantrySwagger.paths,
     },
   },
   apis: [],
