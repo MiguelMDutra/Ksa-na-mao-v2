@@ -13,6 +13,8 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD,
   database,
 });
+console.log(process.env.DB_HOST);
+console.log(process.env.DB_USERNAME);
 
 import userModel from "./User";
 import userChangeTokenModel from "./UserChangeToken";
