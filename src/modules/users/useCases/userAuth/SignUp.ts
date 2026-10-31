@@ -13,8 +13,11 @@ class SignUp {
     if (!userData.email || !userData.password || !userData.username) {
       throw new BadRequest("Algum dado está faltando.");
     }
-    if (await uh.usernameExists(userData.username)) {
+    if (await uh.usernameExists(userData.username, "all")) {
       throw new Conflict("Esse username já está sendo usado.");
+    }
+    if (await uh.emailExists(userData.email, "all")) {
+      throw new Conflict("Esse email já está sendo usado.");
     }
 
     const user = await ur.signUp(userData);

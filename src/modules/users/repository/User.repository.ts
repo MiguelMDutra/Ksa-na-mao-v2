@@ -27,7 +27,6 @@ class UserRepo {
       //};
 
       //Await pantryServices.createPantryAndShoppingList(data, t);
-
       if (created) {
         return {
           userId: user.userId,

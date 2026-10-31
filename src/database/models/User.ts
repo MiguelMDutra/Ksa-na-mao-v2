@@ -195,6 +195,11 @@ export default (sequelize: Sequelize) => {
       },
     },
     {
+      scopes: {
+        all: {
+          paranoid: false,
+        },
+      },
       sequelize,
       modelName: "User",
       paranoid: true,
