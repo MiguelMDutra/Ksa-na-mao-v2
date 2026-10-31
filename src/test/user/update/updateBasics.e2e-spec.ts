@@ -59,7 +59,7 @@ describe("update basic", () => {
   testHelper(
     "Username already exists",
     { username: "usernameexistente" },
-    400,
+    409,
     "Esse username já está sendo usado.",
   );
 

@@ -30,7 +30,7 @@ describe("update password", { concurrency: false }, () => {
   testHelper(
     "New password is the same as current password",
     { password: "senha123@", newPassword: "novaSenha123@" },
-    400,
+    409,
     "A senha é exatamente igual a sua original.",
   );
 

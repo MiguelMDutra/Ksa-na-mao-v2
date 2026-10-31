@@ -15,7 +15,7 @@ describe("SignUp user", () => {
     "miguel",
     "migu@gmail.com",
     "senha123@",
-    400,
+    409,
     "Esse username já está sendo usado.",
   );
 
@@ -60,8 +60,8 @@ describe("SignUp user", () => {
     "miguel123",
     "miguel@gmail.com",
     "senha1234@",
-    400,
-    "O seu email já esta sendo usado.",
+    409,
+    "Esse email já está sendo usado.",
   );
 
   testHelperSequelizeMsg(
