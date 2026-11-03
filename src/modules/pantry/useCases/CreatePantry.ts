@@ -9,7 +9,7 @@ const pr = new PantryRepository();
 
 class CreatePantry {
   async execute(data: createPantry, t?: Transaction): Promise<boolean> {
-    if (!data.name.trim()) {
+    if (!data.name || !data.name.trim()) {
       throw new BadRequest("O estoque precisa de um nome");
     }
 
