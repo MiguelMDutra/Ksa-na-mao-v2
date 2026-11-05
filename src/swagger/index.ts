@@ -1,5 +1,11 @@
 import swaggerJsdoc from "swagger-jsdoc";
+<<<<<<< Updated upstream
 import { userSwagger } from "@src/modules/users/swagger/userSwagger";
+=======
+import { userSwagger } from "@modules/users/swagger/userSwagger";
+import { pantrySwagger } from "@modules/pantry/swagger/pantrySwagger";
+import { recipeSwagger } from "@modules/recipes/swagger/recipeSwagger";
+>>>>>>> Stashed changes
 
 const options = {
   definition: {
@@ -19,6 +25,11 @@ const options = {
     },
     paths: {
       ...userSwagger.paths,
+<<<<<<< Updated upstream
+=======
+      ...pantrySwagger.paths,
+      ...recipeSwagger.paths,
+>>>>>>> Stashed changes
     },
   },
   apis: [],
