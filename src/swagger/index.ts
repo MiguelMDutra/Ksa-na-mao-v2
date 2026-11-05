@@ -6,6 +6,7 @@ import { userSwagger } from "@modules/users/swagger/userSwagger";
 import { pantrySwagger } from "@modules/pantry/swagger/pantrySwagger";
 import { recipeSwagger } from "@modules/recipes/swagger/recipeSwagger";
 >>>>>>> Stashed changes
+import { pantrySwagger } from "@src/modules/pantry/swagger/pantrySwagger";
 
 const options = {
   definition: {
@@ -30,6 +31,7 @@ const options = {
       ...pantrySwagger.paths,
       ...recipeSwagger.paths,
 >>>>>>> Stashed changes
+      ...pantrySwagger.paths,
     },
   },
   apis: [],
