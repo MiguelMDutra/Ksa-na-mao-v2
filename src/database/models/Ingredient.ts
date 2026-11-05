@@ -6,6 +6,7 @@ class Ingredient extends Model {
   declare userId: number;
   declare name: string;
   declare type: string;
+  declare isPublic: boolean;
   declare createdAt: Date;
   declare updatedAt: Date;
   declare deletedAt: Date;
