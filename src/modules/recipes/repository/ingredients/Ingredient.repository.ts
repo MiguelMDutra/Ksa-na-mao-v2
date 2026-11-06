@@ -24,21 +24,30 @@ class IngredientRepo {
     { offset, limit }: offsetLimit,
     userId: number,
   ): Promise<Ingredient[]> {
-    return await ingredientModel
+    const ingredients = await ingredientModel
       .scope({ method: ["available", userId] })
       .findAll({
-        offset: offset,
-        limit: limit,
+        offset,
+        limit,
       });
+
+    return ingredients;
   }
 
   async createIngredient(data: createIngredient): Promise<Ingredient> {
     const [ingredient, created] = await ingredientModel.findOrCreate({
       where: { name: data.name },
-      defaults: { name: data.name, userId: data.userId },
+      defaults: {
+        name: data.name,
+        userId: data.userId,
+        isPublic: data.isPublic,
+        type: data.type,
+      },
     });
+
     if (!created)
       throw new Conflict("Você já tem um ingrediente com esse nome");
+
     return ingredient;
   }
 
