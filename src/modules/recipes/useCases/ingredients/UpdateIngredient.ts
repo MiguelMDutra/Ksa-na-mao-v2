@@ -14,7 +14,10 @@ class UpdateIngredient {
     id: number,
     userId: number,
   ): Promise<object> {
-    if (!data.name.trim() && !data.type && !data.isPublic) {
+    if (
+      Object.keys(data).length === 0 ||
+      (!data.name.trim() && !data.type && !data.isPublic)
+    ) {
       throw new BadRequest("Você precisa mudar algo para atualizar!");
     }
 
