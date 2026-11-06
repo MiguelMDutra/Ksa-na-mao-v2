@@ -4,6 +4,20 @@ import express, { NextFunction, Request, Response } from "express";
 const ingredientController = new IngredientController();
 const R = express.Router();
 
+R.get(
+  "/ingredients/mine",
+  verify,
+  (req: Request, res: Response, next: NextFunction) =>
+    ingredientController.getMyIngredients(req, res, next),
+);
+
+R.get(
+  "/ingredients",
+  verify,
+  (req: Request, res: Response, next: NextFunction) =>
+    ingredientController.getAllIngredients(req, res, next),
+);
+
 R.post(
   "/ingredient",
   verify,
