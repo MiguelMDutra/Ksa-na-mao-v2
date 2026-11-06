@@ -82,7 +82,7 @@ class IngredientController {
         ...bodyData,
       };
       const ingredient = await ci.execute(data);
-      res.status(200).json(ingredient);
+      res.status(201).json(ingredient);
     } catch (error) {
       next(error);
     }
