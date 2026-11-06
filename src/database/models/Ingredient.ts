@@ -1,4 +1,4 @@
-import { DataTypes, Model, Sequelize } from "sequelize";
+import { DataTypes, Model, Op, Sequelize } from "sequelize";
 import type { DatabaseModels } from "./index";
 
 class Ingredient extends Model {
@@ -80,6 +80,16 @@ export default (sequelize: Sequelize) => {
       sequelize,
       modelName: "Ingredient",
       tableName: "Ingredients",
+      paranoid: true,
+      scopes: {
+        public: { where: { isPublic: true } },
+        users: (userId) => ({ where: { userId } }),
+        available: (userId) => ({
+          where: { [Op.or]: { isPublic: true, userId } },
+        }),
+        solid: { where: { type: "Solido" } },
+        liquid: { where: { type: "Liquido" } },
+      },
     },
   );
   return Ingredient;
