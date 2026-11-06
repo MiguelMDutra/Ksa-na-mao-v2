@@ -23,14 +23,14 @@ class IngredientController {
         isFinite(Number(limitQuery)) &&
         Number(limitQuery) > 0
           ? Number(limitQuery)
-          : 5;
+          : 20;
 
       const offset =
         offsetQuery !== undefined &&
         isFinite(Number(offsetQuery)) &&
-        Number(offsetQuery) > 0
+        Number(offsetQuery) >= 0
           ? Number(offsetQuery)
-          : limit - 5;
+          : 0;
 
       const ingredient = await gmi.execute({ offset, limit }, userId);
       res.status(200).json(ingredient);
@@ -53,14 +53,14 @@ class IngredientController {
         isFinite(Number(limitQuery)) &&
         Number(limitQuery) > 0
           ? Number(limitQuery)
-          : 5;
+          : 20;
 
       const offset =
         offsetQuery !== undefined &&
         isFinite(Number(offsetQuery)) &&
-        Number(offsetQuery) > 0
+        Number(offsetQuery) >= 0
           ? Number(offsetQuery)
-          : limit - 5;
+          : 0;
 
       const ingredient = await gai.execute({ offset, limit }, userId);
       res.status(200).json(ingredient);
