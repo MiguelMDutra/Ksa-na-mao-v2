@@ -36,7 +36,7 @@ class IngredientRepo {
 
   async createIngredient(data: createIngredient): Promise<Ingredient> {
     const [ingredient, created] = await ingredientModel.findOrCreate({
-      where: { name: data.name },
+      where: { name: data.name, userId: data.userId },
       defaults: {
         name: data.name,
         userId: data.userId,
