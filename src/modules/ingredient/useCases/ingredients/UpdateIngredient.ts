@@ -2,8 +2,8 @@ import BadRequest from "@src/core/errors/BadRequest.error";
 import Forbidden from "@src/core/errors/Forbidden.error";
 import AppError from "@src/core/errors/AppError.error";
 import { updateIngredient } from "@src/core/types/Ingredient.types";
-import IngredientHelper from "../../repository/ingredients/Ingredients.HELPER";
-import IngredientRepo from "../../repository/ingredients/Ingredient.repository";
+import IngredientHelper from "../../../ingredient/repository/ingredients/Ingredients.HELPER";
+import IngredientRepo from "../../../ingredient/repository/ingredients/Ingredient.repository";
 
 const ih = new IngredientHelper();
 const ir = new IngredientRepo();

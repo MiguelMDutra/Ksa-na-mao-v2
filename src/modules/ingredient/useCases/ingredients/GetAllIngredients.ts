@@ -1,5 +1,5 @@
 import { offsetLimit } from "@src/core/types/auxiliary-types/pagination.types";
-import IngredientRepo from "../../repository/ingredients/Ingredient.repository";
+import IngredientRepo from "../../../ingredient/repository/ingredients/Ingredient.repository";
 
 const ir = new IngredientRepo();
 
