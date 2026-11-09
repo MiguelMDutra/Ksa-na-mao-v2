@@ -1,4 +1,4 @@
-import { AuthUser } from "./authUser.types";
+import { AuthUser } from "./userAuthNExpress/authUser.types";
 
 declare global {
   namespace Express {

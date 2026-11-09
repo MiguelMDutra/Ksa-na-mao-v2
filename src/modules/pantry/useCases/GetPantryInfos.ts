@@ -1,4 +1,4 @@
-import { pantry } from "@src/core/types/Pantry.types";
+import { pantry } from "@src/core/types/pantry/Pantry.types";
 import PantryRepository from "../repository/pantry/Pantry.repository";
 import NotFound from "@src/core/errors/NotFound.error";
 const pr = new PantryRepository();

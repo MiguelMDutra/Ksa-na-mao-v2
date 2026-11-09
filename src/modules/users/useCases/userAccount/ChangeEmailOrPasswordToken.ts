@@ -4,7 +4,7 @@ import NotFound from "@src/core/errors/NotFound.error";
 import UserRepo from "@modules/users/repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
 import UserChangeToken from "@src/modules/userChangeTokens/repository/UserChangeToken.repository";
-import { userBasicsPassword } from "@src/core/types/User.types";
+import { userBasicsPassword } from "@src/core/types/user/User.types";
 
 const uct = new UserChangeToken();
 const ur = new UserRepo();

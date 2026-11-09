@@ -1,4 +1,4 @@
-import { signUpData } from "@src/core/types/User.types";
+import { signUpData } from "@src/core/types/user/User.types";
 import UserRepo from "@modules/users/repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
 import auth from "@src/core/jwt/auth";

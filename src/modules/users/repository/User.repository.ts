@@ -1,6 +1,10 @@
 import models from "@models";
 import NotFound from "@src/core/errors/NotFound.error";
-import { signUpData, userBasics, userUpdate } from "@src/core/types/User.types";
+import {
+  signUpData,
+  userBasics,
+  userUpdate,
+} from "@src/core/types/user/User.types";
 
 const sequelize = models.sequelize;
 const userModel = models.user;
