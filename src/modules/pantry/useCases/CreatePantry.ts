@@ -2,7 +2,7 @@ import BadRequest from "@src/core/errors/BadRequest.error";
 import Conflict from "@src/core/errors/Conflict.error";
 import { createPantry } from "@src/core/types/Pantry.types";
 import { Transaction } from "sequelize";
-import PantryRepository from "../repository/Pantry.repository";
+import PantryRepository from "../repository/pantry/Pantry.repository";
 import models from "@src/database/models";
 const sequelize = models.sequelize;
 const pr = new PantryRepository();

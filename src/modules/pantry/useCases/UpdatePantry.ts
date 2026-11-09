@@ -3,8 +3,8 @@ import Conflict from "@src/core/errors/Conflict.error";
 import Forbidden from "@src/core/errors/Forbidden.error";
 import AppError from "@src/core/errors/AppError.error";
 import { dataUpdate } from "@src/core/types/Pantry.types";
-import PantryHelper from "../repository/Pantry.HELPER";
-import PantryRepository from "../repository/Pantry.repository";
+import PantryHelper from "../repository/pantry/Pantry.HELPER";
+import PantryRepository from "../repository/pantry/Pantry.repository";
 
 const pr = new PantryRepository();
 const ph = new PantryHelper();
