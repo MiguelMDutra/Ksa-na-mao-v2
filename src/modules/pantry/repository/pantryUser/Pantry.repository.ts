@@ -1,4 +1,4 @@
-import { createPantryUser } from "@src/core/types/pantryUser.types";
+import { createPantryUser } from "@src/core/types/pantry/pantryUser.types";
 import models from "@src/database/models";
 import { Transaction } from "sequelize";
 const pantryUserModel = models.pantryUser;
@@ -15,7 +15,7 @@ class PantryUsersRepository {
 
   async createPantry(
     data: createPantryUser,
-    transaction: Transaction,
+    transaction?: Transaction,
   ): Promise<boolean> {
     // eslint-disable-next-line
     const [pantryUser, created] = await pantryUserModel.findOrCreate({

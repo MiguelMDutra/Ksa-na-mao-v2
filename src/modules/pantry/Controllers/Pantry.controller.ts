@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import CreatePantry from "../useCases/CreatePantry";
-import DeletePantry from "../useCases/DeletePantry";
+import DeletePantry from "../useCases/pantry/DeletePantry";
 import GetMyPantries from "../useCases/GetMyPantries";
 import GetPantryInfos from "../useCases/GetPantryInfos";
 import UpdatePantry from "../useCases/UpdatePantry";

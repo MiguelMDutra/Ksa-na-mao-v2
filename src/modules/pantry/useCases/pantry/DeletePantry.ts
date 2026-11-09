@@ -1,7 +1,7 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
 import Forbidden from "@src/core/errors/Forbidden.error";
-import PantryRepository from "../repository/pantry/Pantry.repository";
-import PantryHelper from "../repository/pantry/Pantry.HELPER";
+import PantryRepository from "../../repository/pantry/Pantry.repository";
+import PantryHelper from "../../repository/pantry/Pantry.HELPER";
 import AppError from "@src/core/errors/AppError.error";
 
 const ph = new PantryHelper();

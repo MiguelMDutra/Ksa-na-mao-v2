@@ -1,5 +1,5 @@
-import { pantry } from "@src/core/types/pantry/Pantry.types";
-import PantryRepository from "../repository/pantry/Pantry.repository";
+import { pantry } from "@src/core/types/Pantry.types";
+import PantryRepository from "../../repository/pantry/Pantry.repository";
 
 const pr = new PantryRepository();
 

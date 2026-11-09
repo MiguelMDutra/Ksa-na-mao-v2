@@ -1,3 +1,4 @@
+import { createPantryResponse } from "@src/core/types/pantry/aux-types/createPantryResponse";
 import {
   createPantry,
   dataUpdate,
@@ -60,8 +61,7 @@ class PantryRepository {
   async createPantry(
     data: createPantry,
     transaction: Transaction,
-  ): Promise<boolean> {
-    // eslint-disable-next-line
+  ): Promise<createPantryResponse> {
     const [pantry, created] = await pantryModel.findOrCreate({
       where: {
         name: data.name,
@@ -74,7 +74,7 @@ class PantryRepository {
       transaction,
     });
 
-    return created;
+    return { created: created, pantryId: pantry.pantryId };
   }
 
   async updatePantry(
