@@ -2,7 +2,7 @@ import BadRequest from "@src/core/errors/BadRequest.error";
 import Conflict from "@src/core/errors/Conflict.error";
 import Forbidden from "@src/core/errors/Forbidden.error";
 import AppError from "@src/core/errors/AppError.error";
-import { dataUpdate } from "@src/core/types/Pantry.types";
+import { dataUpdate } from "@src/core/types/pantry/Pantry.types";
 import PantryHelper from "../repository/Pantry.HELPER";
 import PantryRepository from "../repository/Pantry.repository";
 

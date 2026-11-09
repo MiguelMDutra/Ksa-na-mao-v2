@@ -1,5 +1,5 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
-import { updateData } from "@src/core/types/User.types";
+import { updateData } from "@src/core/types/user/User.types";
 import UserHelper from "../../repository/User.HELPER";
 const uh = new UserHelper();
 import UserRepo from "../../repository/User.repository";

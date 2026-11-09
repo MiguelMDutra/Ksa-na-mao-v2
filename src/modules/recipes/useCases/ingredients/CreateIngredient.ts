@@ -1,5 +1,8 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
-import { createIngredient, Ingredient } from "@src/core/types/Ingredient.types";
+import {
+  createIngredient,
+  Ingredient,
+} from "@src/core/types/ingredient/Ingredient.types";
 import IngredientRepo from "../../repository/ingredients/Ingredient.repository";
 const ir = new IngredientRepo();
 

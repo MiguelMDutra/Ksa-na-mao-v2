@@ -3,7 +3,7 @@ import {
   updateIngredient,
   createIngredient,
   Ingredient,
-} from "@src/core/types/Ingredient.types";
+} from "@src/core/types/ingredient/Ingredient.types";
 import models from "@src/database/models";
 import { WhereOptions } from "sequelize";
 const ingredientModel = models.ingredient;

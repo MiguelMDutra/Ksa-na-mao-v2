@@ -1,7 +1,7 @@
 import NotFound from "@src/core/errors/NotFound.error";
 import Unauthorized from "@src/core/errors/Unauthorized.error";
 import auth from "@src/core/jwt/auth";
-import { signUpData } from "@src/core/types/User.types";
+import { signUpData } from "@src/core/types/user/User.types";
 import bcrypt from "bcrypt";
 import BadRequest from "@src/core/errors/BadRequest.error";
 import UserHelper from "../../repository/User.HELPER";

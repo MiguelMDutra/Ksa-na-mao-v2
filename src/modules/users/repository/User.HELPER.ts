@@ -2,7 +2,7 @@ import {
   userAllNoPassword,
   userBasics,
   userBasicsPassword,
-} from "@src/core/types/User.types";
+} from "@src/core/types/user/User.types";
 import NotFound from "@src/core/errors/NotFound.error";
 import models from "@models";
 
