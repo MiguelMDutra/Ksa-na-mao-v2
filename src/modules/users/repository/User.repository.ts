@@ -89,10 +89,12 @@ class UserRepo {
     });
   }
 
-  async DeactivateAccount(userId: number): Promise<void> {
-    await userModel.destroy({
+  async DeactivateAccount(userId: number): Promise<boolean> {
+    const rowsDeleted = await userModel.destroy({
       where: { userId: userId },
     });
+    if (rowsDeleted > 0) return true;
+    return false;
   }
 }
 
