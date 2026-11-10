@@ -1,11 +1,11 @@
-export interface createPantryInvite {
+export interface CreatePantryInvite {
   pantryId: number;
   inviterId: number;
   invitedId: number;
   status: "Pendente";
 }
 
-export interface updatePantryInvite {
+export interface UpdatePantryInvite {
   pantryId: number;
   inviterId: number;
   invitedId: number;

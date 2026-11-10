@@ -1,10 +1,10 @@
-export interface createUnit {
+export interface CreateUnit {
   name: string;
   abbreviation: string;
   type: "Solido" | "Liquido";
 }
 
-export interface getUnit {
+export interface GetUnit {
   id: number;
   name: string;
   abbreviation: string;

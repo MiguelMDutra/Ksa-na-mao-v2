@@ -16,14 +16,14 @@ export class Ingredient extends Model<
   declare isPublic: boolean;
 }
 
-export interface createIngredient {
+export interface CreateIngredient {
   userId: number;
   name: string;
   type?: "Solido" | "Liquido";
   isPublic?: boolean;
 }
 
-export interface updateIngredient {
+export interface UpdateIngredient {
   name: string;
   type: "Solido" | "Liquido";
   isPublic: boolean;

@@ -1,4 +1,4 @@
-export interface createRecipeIngredients {
+export interface CreateRecipeIngredients {
   recipeId: number;
   unitId: number;
   ingredientId: number;

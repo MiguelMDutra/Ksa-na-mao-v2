@@ -4,7 +4,7 @@ import NotFound from "@src/core/errors/NotFound.error";
 import UserRepo from "@modules/users/repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
 import UserChangeToken from "@src/modules/userChangeTokens/repository/UserChangeToken.repository";
-import { userBasicsPassword } from "@src/core/types/user/User.types";
+import { UserBasicsPassword } from "@src/core/types/user/User.types";
 
 const uct = new UserChangeToken();
 const ur = new UserRepo();
@@ -13,7 +13,7 @@ const uh = new UserHelper();
 class ChangeEmailOrPasswordToken {
   static async execute(
     userId: number,
-    newData: userBasicsPassword,
+    newData: UserBasicsPassword,
     token?: string,
   ): Promise<object> {
     const user = await uh.findByIdPassword(userId);

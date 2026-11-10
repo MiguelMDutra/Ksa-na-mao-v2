@@ -14,7 +14,7 @@ export class PantryIngredient extends Model<
   declare deletedAt: Date;
 }
 
-export interface createPantryIngredient {
+export interface CreatePantryIngredient {
   pantryId: number;
   ingredientId: number;
   currentQuantity: number;
@@ -22,7 +22,7 @@ export interface createPantryIngredient {
   expirationDate?: Date;
 }
 
-export interface updatePantryIngredient {
+export interface UpdatePantryIngredient {
   id: number;
   pantryId: number;
   ingredientId: number;

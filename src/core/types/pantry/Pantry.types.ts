@@ -1,4 +1,4 @@
-export interface pantry {
+export interface Pantry {
   pantryId: number;
   ownerId: number;
   name: string;
@@ -7,12 +7,12 @@ export interface pantry {
   deletedAt: Date;
 }
 
-export interface createPantry {
+export interface CreatePantry {
   ownerId: number;
   name: string;
 }
 
-export interface dataUpdate {
+export interface DataUpdate {
   pantryId: number;
   ownerId: number;
   name: string;

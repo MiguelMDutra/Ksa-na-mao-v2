@@ -1,10 +1,10 @@
-import { pantry } from "@src/core/types/pantry/Pantry.types";
+import { Pantry } from "@src/core/types/pantry/Pantry.types";
 import PantryRepository from "../repository/Pantry.repository";
 import NotFound from "@src/core/errors/NotFound.error";
 const pr = new PantryRepository();
 
 class GetPantryInfos {
-  async getPantryInfos(pantryId: number, userId: number): Promise<pantry> {
+  async getPantryInfos(pantryId: number, userId: number): Promise<Pantry> {
     // Const membership = await PantryUsers.findOne({
     //   Where: {
     //     PantryId: pantryId,
