@@ -5,6 +5,7 @@ import UserRepo from "@modules/users/repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
 import UserChangeToken from "@src/modules/userChangeTokens/repository/UserChangeToken.repository";
 import { userBasicsPassword } from "@src/core/types/user/User.types";
+import { MessageOnly } from "@src/core/types/auxiliary-types/responses/messageOnly";
 
 const uct = new UserChangeToken();
 const ur = new UserRepo();
@@ -15,7 +16,7 @@ class ChangeEmailOrPasswordToken {
     userId: number,
     newData: userBasicsPassword,
     token?: string,
-  ): Promise<object> {
+  ): Promise<MessageOnly | null> {
     const user = await uh.findByIdPassword(userId);
 
     if (!user) {

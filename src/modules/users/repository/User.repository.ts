@@ -1,5 +1,6 @@
 import models from "@models";
 import NotFound from "@src/core/errors/NotFound.error";
+import { MessageOnly } from "@src/core/types/auxiliary-types/responses/messageOnly";
 import {
   signUpData,
   userBasics,
@@ -67,7 +68,7 @@ class UserRepo {
     updateData: { email?: string; password?: string },
     userId: number,
     tokenId: number,
-  ): Promise<object> {
+  ): Promise<MessageOnly | null> {
     return await sequelize.transaction(async (t) => {
       await userModel.update(updateData, {
         where: { userId: userId },
@@ -75,7 +76,7 @@ class UserRepo {
         individualHooks: true,
       });
 
-      await userChangeTokenModel.update(
+      const isUpdated = await userChangeTokenModel.update(
         { used: true },
         {
           where: { id: tokenId },
@@ -83,9 +84,11 @@ class UserRepo {
         },
       );
 
-      return {
-        message: "Conta atualizada com sucesso!",
-      };
+      if (isUpdated[0] > 0)
+        return {
+          message: "Conta atualizada com sucesso!",
+        };
+      else return null;
     });
   }
 
