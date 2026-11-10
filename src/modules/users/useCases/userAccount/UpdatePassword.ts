@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import UserRepo from "../../repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
 import Conflict from "@src/core/errors/Conflict.error";
+import { MessageOnly } from "@src/core/types/auxiliary-types/responses/messageOnly";
 const ur = new UserRepo();
 const uh = new UserHelper();
 
@@ -14,7 +15,7 @@ class UpdatePassword {
       newPassword: string;
     },
     userId: number,
-  ): Promise<object> {
+  ): Promise<MessageOnly> {
     if (
       !data ||
       typeof data.password !== "string" ||
