@@ -5,6 +5,10 @@ import verify from "@src/core/jwt/verifyToken";
 const R = express.Router();
 const pantryIngredientController = new PantryIngredientController();
 
+R.get("/pantry/:pantryId/ingredients", verify, (req: Request, res: Response) =>
+  pantryIngredientController.getPantryIngredients(req, res),
+);
+
 R.post("/pantry/:pantryId/ingredients", verify, (req: Request, res: Response) =>
   pantryIngredientController.create(req, res),
 );

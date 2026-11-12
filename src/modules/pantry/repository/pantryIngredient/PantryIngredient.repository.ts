@@ -1,4 +1,5 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
+import { OffsetLimit } from "@src/core/types/auxiliary-types/options/pagination.types";
 import {
   PantryIngredientCreate,
   PantryIngredientModel,
@@ -9,6 +10,17 @@ import { Transaction } from "sequelize";
 const pantryIngredientModel = models.pantryIngredient;
 
 class PantryIngredientRepository {
+  async getPantryIngredients(
+    pantryId: number,
+    { offset, limit }: OffsetLimit,
+  ): Promise<PantryIngredientModel[]> {
+    return await pantryIngredientModel.findAll({
+      where: { pantryId },
+      offset,
+      limit,
+    });
+  }
+
   async createPantryIngredient(
     ingredient: PantryIngredientCreate,
     pantryId: number,
