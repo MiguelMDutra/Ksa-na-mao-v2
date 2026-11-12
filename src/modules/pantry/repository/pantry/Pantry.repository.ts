@@ -1,6 +1,6 @@
 import {
-  PantryCreate,
-  PantryUpdate,
+  CreatePantry,
+  DataUpdate,
   Pantry,
 } from "@src/core/types/pantry/Pantry.types";
 import models from "@src/database/models";
@@ -58,7 +58,7 @@ class PantryRepository {
   }
 
   async createPantry(
-    data: PantryCreate,
+    data: CreatePantry,
     transaction: Transaction,
   ): Promise<boolean> {
     // eslint-disable-next-line
@@ -78,7 +78,7 @@ class PantryRepository {
   }
 
   async updatePantry(
-    data: PantryUpdate,
+    data: DataUpdate,
     pantryId: number,
   ): Promise<number | null> {
     const [updated] = await pantryModel.update(data, {

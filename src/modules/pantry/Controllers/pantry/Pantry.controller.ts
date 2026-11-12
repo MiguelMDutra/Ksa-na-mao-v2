@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import CreatePantry from "../useCases/CreatePantry";
-import DeletePantry from "../useCases/DeletePantry";
-import GetMyPantries from "../useCases/GetMyPantries";
-import GetPantryInfos from "../useCases/GetPantryInfos";
-import UpdatePantry from "../useCases/UpdatePantry";
+import CreatePantry from "../../useCases/pantry/CreatePantry";
+import DeletePantry from "../../useCases/pantry/DeletePantry";
+import GetMyPantries from "../../useCases/pantry/GetMyPantries";
+import GetPantryInfos from "../../useCases/pantry/GetPantryInfos";
+import UpdatePantry from "../../useCases/pantry/UpdatePantry";
 
 const createPantry = new CreatePantry();
 const deletePantry = new DeletePantry();
