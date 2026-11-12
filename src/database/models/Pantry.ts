@@ -46,7 +46,6 @@ export default (sequelize: Sequelize) => {
       },
       name: {
         type: DataTypes.STRING(100),
-        unique: true,
         allowNull: false,
         validate: {
           len: {
