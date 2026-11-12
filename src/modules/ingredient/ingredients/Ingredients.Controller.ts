@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import GetMyIngredients from "../../recipes/useCases/ingredients/GetMyIngredients";
-import GetAllIngredients from "../../recipes/useCases/ingredients/GetAllIngredients";
-import CreateIngredient from "../../recipes/useCases/ingredients/CreateIngredient";
-import UpdateIngredient from "../../recipes/useCases/ingredients/UpdateIngredient";
+import GetMyIngredients from "../../ingredient/useCases/ingredients/GetMyIngredients";
+import GetAllIngredients from "../../ingredient/useCases/ingredients/GetAllIngredients";
+import CreateIngredient from "../../ingredient/useCases/ingredients/CreateIngredient";
+import UpdateIngredient from "../../ingredient/useCases/ingredients/UpdateIngredient";
 const gmi = new GetMyIngredients();
 const gai = new GetAllIngredients();
 const ci = new CreateIngredient();
