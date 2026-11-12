@@ -1,4 +1,4 @@
-export interface CreateNotification {
+export interface NotificationCreate {
   receiverId: number;
   creatorId: number;
   recipeId?: number;

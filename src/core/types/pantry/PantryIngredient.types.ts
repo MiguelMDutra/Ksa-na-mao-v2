@@ -1,8 +1,8 @@
 import { Model, InferAttributes, InferCreationAttributes } from "sequelize";
 
-export class PantryIngredient extends Model<
-  InferAttributes<PantryIngredient>,
-  InferCreationAttributes<PantryIngredient>
+export class PantryIngredientModel extends Model<
+  InferAttributes<PantryIngredientModel>,
+  InferCreationAttributes<PantryIngredientModel>
 > {
   declare pantryId: number;
   declare ingredientId: number;
@@ -14,7 +14,7 @@ export class PantryIngredient extends Model<
   declare deletedAt: Date;
 }
 
-export interface CreatePantryIngredient {
+export interface PantryIngredientCreate {
   pantryId: number;
   ingredientId: number;
   currentQuantity: number;
@@ -22,7 +22,7 @@ export interface CreatePantryIngredient {
   expirationDate?: Date;
 }
 
-export interface UpdatePantryIngredient {
+export interface PantryIngredientUpdate {
   id: number;
   pantryId: number;
   ingredientId: number;

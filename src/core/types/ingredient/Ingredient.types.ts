@@ -5,9 +5,9 @@ import {
   CreationOptional,
 } from "sequelize";
 
-export class Ingredient extends Model<
-  InferAttributes<Ingredient>,
-  InferCreationAttributes<Ingredient>
+export class IngredientModel extends Model<
+  InferAttributes<IngredientModel>,
+  InferCreationAttributes<IngredientModel>
 > {
   declare ingredientId: CreationOptional<number>;
   declare userId: number;
@@ -16,14 +16,14 @@ export class Ingredient extends Model<
   declare isPublic: boolean;
 }
 
-export interface CreateIngredient {
+export interface IngredientCreate {
   userId: number;
   name: string;
   type?: "Solido" | "Liquido";
   isPublic?: boolean;
 }
 
-export interface UpdateIngredient {
+export interface IngredientUpdate {
   name: string;
   type: "Solido" | "Liquido";
   isPublic: boolean;

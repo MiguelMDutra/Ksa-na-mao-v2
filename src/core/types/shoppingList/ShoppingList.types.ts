@@ -1,9 +1,9 @@
-export interface CreateShoppingList {
+export interface ShoppingListCreate {
   userId: number;
   pantryId: number;
 }
 
-export interface GetShoppingList {
+export interface ShoppingListGet {
   shoppingListId: number;
   userId: number;
   pantryId: number;

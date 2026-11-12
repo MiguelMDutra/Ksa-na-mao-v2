@@ -1,13 +1,13 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
 import {
-  CreateIngredient,
-  Ingredient,
+  IngredientCreate,
+  IngredientModel,
 } from "@src/core/types/ingredient/Ingredient.types";
 import IngredientRepo from "../../repository/ingredients/Ingredient.repository";
 const ir = new IngredientRepo();
 
-class CreateIngredientClass {
-  async execute(data: CreateIngredient): Promise<Ingredient> {
+class CreateIngredient {
+  async execute(data: IngredientCreate): Promise<IngredientModel> {
     if (data.name) {
       const response = await ir.createIngredient(data);
       return response;
@@ -16,4 +16,4 @@ class CreateIngredientClass {
   }
 }
 
-export default CreateIngredientClass;
+export default CreateIngredient;
