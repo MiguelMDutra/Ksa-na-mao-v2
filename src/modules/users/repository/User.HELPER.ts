@@ -1,8 +1,8 @@
 import {
   userAllNoPassword,
-  userBasics,
-  userBasicsPassword,
-} from "@src/core/types/User.types";
+  UserBasics,
+  UserBasicsPassword,
+} from "@src/core/types/user/User.types";
 import NotFound from "@src/core/errors/NotFound.error";
 import models from "@models";
 
@@ -25,7 +25,7 @@ class UserHelper {
     return user.get({ plain: true }) as Pick<userAllNoPassword, K>;
   }
 
-  async findByIdPassword(id: number): Promise<userBasicsPassword> {
+  async findByIdPassword(id: number): Promise<UserBasicsPassword> {
     const user = await userModel.findOne({
       where: { userId: id },
     });
@@ -34,7 +34,7 @@ class UserHelper {
       throw new NotFound("Usuario não encontrado.");
     }
 
-    return user.get({ plain: true }) as userBasicsPassword;
+    return user.get({ plain: true }) as UserBasicsPassword;
   }
 
   async usernameExists(username: string, scope?: string): Promise<boolean> {
@@ -49,7 +49,7 @@ class UserHelper {
     return user !== null;
   }
 
-  async emailExists(email: string, scope?: string): Promise<userBasics | null> {
+  async emailExists(email: string, scope?: string): Promise<UserBasics | null> {
     const user = await userModel.scope(scope).findOne({
       where: {
         email: email,

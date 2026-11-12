@@ -1,4 +1,4 @@
-export interface createFollower {
+export interface FollowerCreate {
   followerId: number;
   followedId: number;
 }

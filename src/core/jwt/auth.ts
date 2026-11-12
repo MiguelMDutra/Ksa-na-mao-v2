@@ -1,4 +1,4 @@
-import { userBasics } from "../types/User.types";
+import { userBasics } from "../types/user/User.types";
 import jwt from "jsonwebtoken";
 
 export function auth(user: userBasics): string {
