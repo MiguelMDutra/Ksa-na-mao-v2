@@ -1,10 +1,15 @@
-export interface Pantry {
-  pantryId: number;
-  ownerId: number;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
+import { Model, InferAttributes, InferCreationAttributes } from "sequelize";
+
+export class PantryModel extends Model<
+  InferAttributes<PantryModel>,
+  InferCreationAttributes<PantryModel>
+> {
+  declare pantryId: number;
+  declare ownerId: number;
+  declare name: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt: Date;
 }
 
 export interface PantryCreate {
