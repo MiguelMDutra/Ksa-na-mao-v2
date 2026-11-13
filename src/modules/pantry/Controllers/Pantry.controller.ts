@@ -36,23 +36,19 @@ class PantryController {
 
   async getMyPantries(req: Request, res: Response): Promise<void> {
     const { userId } = req.user!;
-    const { limit } = req.query;
+    const { page } = req.query;
 
-    const numberLimit = Number(limit);
+    const numberPage = Number(page);
 
-    const finalLimit =
-      typeof limit === "string" &&
-      Number.isInteger(numberLimit) &&
-      numberLimit < 50 &&
-      numberLimit > 0
-        ? numberLimit
-        : 5;
+    const finalOffset =
+      typeof page === "string" &&
+      Number.isInteger(numberPage) &&
+      numberPage >= 1 &&
+      numberPage <= 2
+        ? (numberPage - 1) * 5
+        : 0;
 
-    const response = await getMyPantries.getMyPantries(
-      userId,
-      finalLimit - 5,
-      finalLimit,
-    );
+    const response = await getMyPantries.getMyPantries(userId, finalOffset, 5);
 
     res.status(200).json(response);
   }
