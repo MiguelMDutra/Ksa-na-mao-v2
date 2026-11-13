@@ -9,6 +9,7 @@ import { Transaction } from "sequelize";
 const pantryModel = models.pantry;
 const userModel = models.user;
 const pantryUserModel = models.pantryUser;
+const pantryIngredientModel = models.pantryIngredient;
 
 class PantryRepository {
   async getMyPantries(
@@ -29,10 +30,10 @@ class PantryRepository {
     return pantryModel.findOne({
       where: { pantryId: id },
       include: [
-        // {
-        //   Model: PantryIngredient,
-        //   As: "allPantryIngredients",
-        // },
+        {
+          model: pantryIngredientModel,
+          as: "ingredients",
+        },
 
         {
           model: userModel,
@@ -50,11 +51,6 @@ class PantryRepository {
             ],
           },
         },
-
-        // {
-        //   Model: ShoppingList,
-        //   As: "PantrysShopping",
-        // },
       ],
     });
   }
