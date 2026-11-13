@@ -20,7 +20,6 @@ export default {
       name: {
         type: DataTypes.STRING(100),
         allowNull: true,
-        unique: true,
       },
       createdAt: {
         type: DataTypes.DATE,
