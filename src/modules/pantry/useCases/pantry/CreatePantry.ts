@@ -1,6 +1,6 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
 import Conflict from "@src/core/errors/Conflict.error";
-import { createPantry } from "@src/core/types/pantry/Pantry.types";
+import { PantryCreate } from "@src/core/types/pantry/Pantry.types";
 import { Transaction } from "sequelize";
 import PantryRepository from "../../repository/pantry/Pantry.repository";
 import PantryUsersRepository from "../../repository/pantryUser/Pantry.repository";
@@ -9,8 +9,8 @@ const sequelize = models.sequelize;
 const pr = new PantryRepository();
 const pur = new PantryUsersRepository();
 
-class CreatePantry {
-  async execute(data: createPantry, t?: Transaction): Promise<boolean> {
+class CreatePantryClass {
+  async execute(data: PantryCreate, t?: Transaction): Promise<boolean> {
     if (!data.name || !data.name.trim()) {
       throw new BadRequest("O estoque precisa de um nome");
     }
@@ -42,4 +42,4 @@ class CreatePantry {
   }
 }
 
-export default CreatePantry;
+export default CreatePantryClass;

@@ -1,8 +1,8 @@
 import { createPantryResponse } from "@src/core/types/pantry/aux-types/createPantryResponse";
 import {
-  createPantry,
-  dataUpdate,
-  pantry,
+  PantryCreate,
+  PantryUpdate,
+  Pantry,
 } from "@src/core/types/pantry/Pantry.types";
 import models from "@src/database/models";
 import { Transaction } from "sequelize";
@@ -14,7 +14,7 @@ class PantryRepository {
     userId: number,
     offset: number,
     limit: number,
-  ): Promise<pantry[]> {
+  ): Promise<Pantry[]> {
     const response = await pantryModel.findAll({
       where: { ownerId: userId },
       limit,
@@ -24,7 +24,7 @@ class PantryRepository {
     return response;
   }
 
-  getPantryInfos(id: number): Promise<pantry | null> {
+  getPantryInfos(id: number): Promise<Pantry | null> {
     return pantryModel.findOne({
       where: { pantryId: id },
       include: [
@@ -59,7 +59,7 @@ class PantryRepository {
   }
 
   async createPantry(
-    data: createPantry,
+    data: PantryCreate,
     transaction: Transaction,
   ): Promise<createPantryResponse> {
     const [pantry, created] = await pantryModel.findOrCreate({
@@ -78,7 +78,7 @@ class PantryRepository {
   }
 
   async updatePantry(
-    data: dataUpdate,
+    data: PantryUpdate,
     pantryId: number,
   ): Promise<number | null> {
     const [updated] = await pantryModel.update(data, {

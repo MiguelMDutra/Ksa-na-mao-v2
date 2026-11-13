@@ -2,16 +2,16 @@ import BadRequest from "@src/core/errors/BadRequest.error";
 import Conflict from "@src/core/errors/Conflict.error";
 import Forbidden from "@src/core/errors/Forbidden.error";
 import AppError from "@src/core/errors/AppError.error";
+import { PantryUpdate } from "@src/core/types/pantry/Pantry.types";
 import PantryHelper from "../../repository/pantry/Pantry.HELPER";
 import PantryRepository from "../../repository/pantry/Pantry.repository";
-import { dataUpdate } from "@src/core/types/pantry/Pantry.types";
 
 const pr = new PantryRepository();
 const ph = new PantryHelper();
 
 class UpdatePantry {
   async updateNamePantry(
-    data: dataUpdate,
+    data: PantryUpdate,
     id: number,
     userId: number,
   ): Promise<object> {

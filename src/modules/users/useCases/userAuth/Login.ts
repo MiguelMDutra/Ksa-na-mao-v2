@@ -1,14 +1,14 @@
 import NotFound from "@src/core/errors/NotFound.error";
 import Unauthorized from "@src/core/errors/Unauthorized.error";
 import auth from "@src/core/jwt/auth";
-import { signUpData } from "@src/core/types/user/User.types";
+import { SignUpData } from "@src/core/types/user/User.types";
 import bcrypt from "bcrypt";
 import BadRequest from "@src/core/errors/BadRequest.error";
 import UserHelper from "../../repository/User.HELPER";
 const uh = new UserHelper();
 
 class Login {
-  static async execute(userData: signUpData): Promise<string> {
+  static async execute(userData: SignUpData): Promise<string> {
     if (!userData.email || !userData.password) {
       throw new BadRequest("Voce precisa do email e senha para fazer login");
     }

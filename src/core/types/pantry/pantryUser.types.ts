@@ -1,4 +1,4 @@
-export interface createPantryUser {
+export interface PantryUserCreate {
   pantryId: number;
   userId: number;
 }

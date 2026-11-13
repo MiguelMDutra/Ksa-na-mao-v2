@@ -1,6 +1,6 @@
 //Utilizador
 
-export interface userAll {
+export interface UserAll {
   userId: number;
   username: string;
   password: string;
@@ -17,23 +17,23 @@ export interface userAll {
   usernameUpdatedAt: Date | null;
 }
 
-export type userAllNoPassword = Omit<userAll, "password">;
+export type userAllNoPassword = Omit<UserAll, "password">;
 
 //Entrada
 
-export interface signUpData {
+export interface SignUpData {
   username: string;
   email: string;
   password: string;
 }
 
-export type userUpdate = Partial<
-  Pick<userAll, "name" | "bio" | "username" | "email" | "password" | "pfp">
+export type UserUpdate = Partial<
+  Pick<UserAll, "name" | "bio" | "username" | "email" | "password" | "pfp">
 >;
 
 //Publico
 
-export interface getOneUserData {
+export interface GetOneUserData {
   userId: number;
   username: string;
   pfp?: string;
@@ -42,7 +42,7 @@ export interface getOneUserData {
   createdAt: string;
 }
 
-export interface searchUsers {
+export interface SearchUsers {
   userId: number;
   username: string;
   pfp?: string;
@@ -51,16 +51,16 @@ export interface searchUsers {
 
 //Interno
 
-export interface userBasics {
+export interface UserBasics {
   userId: number;
   email: string;
 }
 
-export interface userBasicsPassword extends userBasics {
+export interface UserBasicsPassword extends UserBasics {
   password: string;
 }
 
-export interface updateData {
+export interface UpdateData {
   userId: number;
   name: string;
   username: string;

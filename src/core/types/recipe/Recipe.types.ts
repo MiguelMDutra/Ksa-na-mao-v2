@@ -1,4 +1,4 @@
-export interface createOrUpdateRecipe {
+export interface RecipeCreateOrUpdate {
   userId: number;
   originalRecipeId?: number;
   title: string;
@@ -7,7 +7,7 @@ export interface createOrUpdateRecipe {
   category: string;
 }
 
-export interface getRecipe {
+export interface RecipeGet {
   recipeId: number;
   userId: number;
   originalRecipeId?: number;
