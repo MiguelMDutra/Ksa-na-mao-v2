@@ -1,7 +1,7 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
 import Forbidden from "@src/core/errors/Forbidden.error";
 import AppError from "@src/core/errors/AppError.error";
-import { updateIngredient } from "@src/core/types/ingredient/Ingredient.types";
+import { IngredientUpdate } from "@src/core/types/ingredient/Ingredient.types";
 import IngredientHelper from "../../repository/ingredients/Ingredients.HELPER";
 import IngredientRepo from "../../repository/ingredients/Ingredient.repository";
 
@@ -10,7 +10,7 @@ const ir = new IngredientRepo();
 
 class UpdateIngredient {
   async execute(
-    data: updateIngredient,
+    data: IngredientUpdate,
     id: number,
     userId: number,
   ): Promise<object> {

@@ -1,19 +1,22 @@
+import { CreatePantryResponse } from "@src/core/types/pantry/aux-types/createPantryResponse";
 import {
-  createPantry,
-  dataUpdate,
-  pantry,
+  PantryCreate,
+  PantryUpdate,
+  PantryModel,
 } from "@src/core/types/pantry/Pantry.types";
 import models from "@src/database/models";
 import { Transaction } from "sequelize";
 const pantryModel = models.pantry;
 const userModel = models.user;
+const pantryUserModel = models.pantryUser;
+const pantryIngredientModel = models.pantryIngredient;
 
 class PantryRepository {
   async getMyPantries(
     userId: number,
     offset: number,
     limit: number,
-  ): Promise<pantry[]> {
+  ): Promise<PantryModel[]> {
     const response = await pantryModel.findAll({
       where: { ownerId: userId },
       limit,
@@ -23,14 +26,14 @@ class PantryRepository {
     return response;
   }
 
-  getPantryInfos(id: number): Promise<pantry | null> {
+  getPantryInfos(id: number): Promise<PantryModel | null> {
     return pantryModel.findOne({
       where: { pantryId: id },
       include: [
-        // {
-        //   Model: PantryIngredient,
-        //   As: "allPantryIngredients",
-        // },
+        {
+          model: pantryIngredientModel,
+          as: "ingredients",
+        },
 
         {
           model: userModel,
@@ -48,20 +51,14 @@ class PantryRepository {
             ],
           },
         },
-
-        // {
-        //   Model: ShoppingList,
-        //   As: "PantrysShopping",
-        // },
       ],
     });
   }
 
   async createPantry(
-    data: createPantry,
+    data: PantryCreate,
     transaction: Transaction,
-  ): Promise<boolean> {
-    // eslint-disable-next-line
+  ): Promise<CreatePantryResponse> {
     const [pantry, created] = await pantryModel.findOrCreate({
       where: {
         name: data.name,
@@ -74,11 +71,19 @@ class PantryRepository {
       transaction,
     });
 
-    return created;
+    await pantryUserModel.create(
+      {
+        pantryId: pantry.dataValues.pantryId,
+        userId: pantry.dataValues.ownerId,
+      },
+      { transaction },
+    );
+
+    return { created: created, pantryId: pantry.pantryId };
   }
 
   async updatePantry(
-    data: dataUpdate,
+    data: PantryUpdate,
     pantryId: number,
   ): Promise<number | null> {
     const [updated] = await pantryModel.update(data, {
@@ -93,8 +98,7 @@ class PantryRepository {
     const deleted = await pantryModel.destroy({
       where: { pantryId: id },
     });
-    if (deleted > 0) return deleted;
-    return null;
+    return deleted;
   }
 }
 

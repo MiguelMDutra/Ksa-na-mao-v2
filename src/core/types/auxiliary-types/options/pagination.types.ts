@@ -1,4 +1,4 @@
-export interface offsetLimit {
+export interface OffsetLimit {
   offset: number;
   limit: number;
 }

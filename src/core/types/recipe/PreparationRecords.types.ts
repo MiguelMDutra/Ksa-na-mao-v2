@@ -1,4 +1,4 @@
-export interface createOrUpdatePreparationRecords {
+export interface PreparationRecordsCreateOrUpdate {
   userId: number;
   recipeId: number;
   servings: number;

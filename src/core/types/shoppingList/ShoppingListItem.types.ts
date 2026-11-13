@@ -1,10 +1,10 @@
-export interface createListItem {
+export interface ListItemCreate {
   shoppingListId: number;
   ingredientId: number;
   amount: number;
 }
 
-export interface getListItem {
+export interface ListItemGet {
   shoppingListItemId: number;
   shoppingListId: number;
   ingredientId: number;
