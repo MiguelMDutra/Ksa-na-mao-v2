@@ -102,8 +102,7 @@ class PantryRepository {
     const deleted = await pantryModel.destroy({
       where: { pantryId: id },
     });
-    if (deleted > 0) return deleted;
-    return null;
+    return deleted;
   }
 }
 
