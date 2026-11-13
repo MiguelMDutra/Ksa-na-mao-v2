@@ -1,20 +1,21 @@
-import { createPantryResponse } from "@src/core/types/pantry/aux-types/createPantryResponse";
+import { CreatePantryResponse } from "@src/core/types/pantry/aux-types/createPantryResponse";
 import {
   PantryCreate,
   PantryUpdate,
-  Pantry,
+  PantryModel,
 } from "@src/core/types/pantry/Pantry.types";
 import models from "@src/database/models";
 import { Transaction } from "sequelize";
 const pantryModel = models.pantry;
 const userModel = models.user;
+const pantryUserModel = models.pantryUser;
 
 class PantryRepository {
   async getMyPantries(
     userId: number,
     offset: number,
     limit: number,
-  ): Promise<Pantry[]> {
+  ): Promise<PantryModel[]> {
     const response = await pantryModel.findAll({
       where: { ownerId: userId },
       limit,
@@ -24,7 +25,7 @@ class PantryRepository {
     return response;
   }
 
-  getPantryInfos(id: number): Promise<Pantry | null> {
+  getPantryInfos(id: number): Promise<PantryModel | null> {
     return pantryModel.findOne({
       where: { pantryId: id },
       include: [
@@ -61,7 +62,7 @@ class PantryRepository {
   async createPantry(
     data: PantryCreate,
     transaction: Transaction,
-  ): Promise<createPantryResponse> {
+  ): Promise<CreatePantryResponse> {
     const [pantry, created] = await pantryModel.findOrCreate({
       where: {
         name: data.name,
@@ -73,6 +74,14 @@ class PantryRepository {
       },
       transaction,
     });
+
+    await pantryUserModel.create(
+      {
+        pantryId: pantry.dataValues.pantryId,
+        userId: pantry.dataValues.ownerId,
+      },
+      { transaction },
+    );
 
     return { created: created, pantryId: pantry.pantryId };
   }

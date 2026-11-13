@@ -3,7 +3,7 @@ import test, { before, describe } from "node:test";
 import assert from "node:assert";
 
 import app from "@src/app";
-import { createPantry } from "@src/core/types/pantry/Pantry.types";
+import { PantryCreate } from "@src/core/types/pantry/Pantry.types";
 import { clearDatabase } from "@src/test/helper/clearDataBase";
 import createUser from "@src/test/helper/createUser";
 
@@ -23,7 +23,7 @@ describe("Create pantry", () => {
 
   const validData = {
     name: "Estoque principal",
-  } as createPantry;
+  } as PantryCreate;
 
   testeHelper(
     "Should create a pantry successfully",
@@ -51,7 +51,7 @@ describe("Create pantry", () => {
 
   testeHelper(
     "Should throw BadRequest when name is empty",
-    { name: "" } as createPantry,
+    { name: "" } as PantryCreate,
     () => token,
     400,
     {
@@ -61,7 +61,7 @@ describe("Create pantry", () => {
 
   testeHelper(
     "Should throw BadRequest when name contains only spaces",
-    { name: "     " } as createPantry,
+    { name: "     " } as PantryCreate,
     () => token,
     400,
     {
@@ -81,7 +81,7 @@ describe("Create pantry", () => {
 
 async function testeHelper(
   title: string,
-  data: createPantry,
+  data: PantryCreate,
   token: () => string,
   expected: number,
   strict?: object,
