@@ -2,7 +2,7 @@ import { PantryModel } from "@src/core/types/pantry/Pantry.types";
 import NotFound from "@src/core/errors/NotFound.error";
 import Forbidden from "@src/core/errors/Forbidden.error";
 import PantryRepository from "../../repository/pantry/Pantry.repository";
-import PantryUsersRepository from "../../repository/pantryUser/Pantry.repository";
+import PantryUsersRepository from "../../repository/pantryUser/PantryUser.repository";
 import PantryHelper from "../../repository/pantry/Pantry.HELPER";
 
 const ph = new PantryHelper();
