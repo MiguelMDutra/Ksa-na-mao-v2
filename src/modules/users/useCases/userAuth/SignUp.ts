@@ -1,4 +1,4 @@
-import { signUpData } from "@src/core/types/User.types";
+import { SignUpData } from "@src/core/types/user/User.types";
 import UserRepo from "@modules/users/repository/User.repository";
 import UserHelper from "../../repository/User.HELPER";
 import auth from "@src/core/jwt/auth";
@@ -9,7 +9,7 @@ const ur = new UserRepo();
 const uh = new UserHelper();
 
 class SignUp {
-  static async execute(userData: signUpData): Promise<string | undefined> {
+  static async execute(userData: SignUpData): Promise<string | undefined> {
     if (!userData.email || !userData.password || !userData.username) {
       throw new BadRequest("Algum dado está faltando.");
     }

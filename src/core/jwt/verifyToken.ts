@@ -4,7 +4,7 @@ import Unauthorized from "../errors/Unauthorized.error";
 
 import models from "@src/database/models";
 import Forbidden from "../errors/Forbidden.error";
-import { AuthUser } from "../types/authUser.types";
+import { AuthUser } from "../types/userAuthNExpress/authUser.types";
 const userModel = models.user;
 
 export async function verify(
