@@ -1,7 +1,7 @@
 import {
   PantryIngredientModel,
   PantryIngredientUpdate,
-} from "@src/core/types/pantry/PantryIngredient.types";
+} from "@src/core/types/pantry/PantryIngredients/PantryIngredient.types";
 import { Transaction } from "sequelize";
 import models from "@src/database/models";
 import PantryIngredientHelper from "../../repository/pantryIngredient/PantryIngredient.HELPER";

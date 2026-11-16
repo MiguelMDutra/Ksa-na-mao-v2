@@ -2,7 +2,7 @@ import Forbidden from "@src/core/errors/Forbidden.error";
 import { OffsetLimit } from "@src/core/types/auxiliary-types/options/pagination.types";
 import PantryIngredientRepository from "../../repository/pantryIngredient/PantryIngredient.repository";
 import PantryHelper from "../../repository/pantry/Pantry.HELPER";
-import { PantryIngredientModel } from "@src/core/types/pantry/PantryIngredient.types";
+import { PantryIngredientModel } from "@src/core/types/pantry/PantryIngredients/PantryIngredient.types";
 const ph = new PantryHelper();
 const pir = new PantryIngredientRepository();
 

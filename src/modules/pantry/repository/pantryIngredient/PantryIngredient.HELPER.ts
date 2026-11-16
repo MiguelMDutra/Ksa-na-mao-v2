@@ -1,4 +1,4 @@
-import { PantryIngredientModel } from "@src/core/types/pantry/PantryIngredient.types";
+import { PantryIngredientModel } from "@src/core/types/pantry/PantryIngredients/PantryIngredient.types";
 import models from "@src/database/models";
 import { Transaction } from "sequelize";
 const pantryIngredientModel = models.pantryIngredient;

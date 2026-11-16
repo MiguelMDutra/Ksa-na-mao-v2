@@ -3,7 +3,7 @@ import Forbidden from "@src/core/errors/Forbidden.error";
 import {
   PantryIngredientCreate,
   PantryIngredientModel,
-} from "@src/core/types/pantry/PantryIngredient.types";
+} from "@src/core/types/pantry/PantryIngredients/PantryIngredient.types";
 import { Transaction } from "sequelize";
 import models from "@src/database/models";
 import PantryIngredientRepository from "../../repository/pantryIngredient/PantryIngredient.repository";

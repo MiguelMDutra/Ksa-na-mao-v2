@@ -4,7 +4,7 @@ import {
   PantryIngredientCreate,
   PantryIngredientModel,
   PantryIngredientUpdate,
-} from "@src/core/types/pantry/PantryIngredient.types";
+} from "@src/core/types/pantry/PantryIngredients/PantryIngredient.types";
 import models from "@src/database/models";
 import { Transaction } from "sequelize";
 const pantryIngredientModel = models.pantryIngredient;
