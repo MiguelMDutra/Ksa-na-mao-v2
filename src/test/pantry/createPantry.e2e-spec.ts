@@ -22,7 +22,7 @@ describe("Create pantry", () => {
   });
 
   const validData = {
-    name: "Estoque principal",
+    name: `${Date.now()}`,
   } as PantryCreate;
 
   testeHelper(
@@ -57,6 +57,22 @@ describe("Create pantry", () => {
     {
       message: "O estoque precisa de um nome",
     },
+  );
+
+  for (let i = 1; i < 10; i++) {
+    testeHelper(
+      `Should create pantry ${i + 1} of 10`,
+      { name: `Pantry ${i + 1}` } as PantryCreate,
+      () => token,
+      201,
+    );
+  }
+
+  testeHelper(
+    "Should throw BadRequest when exceeding pantry limit",
+    { name: "Pantry 11" } as PantryCreate,
+    () => token,
+    400,
   );
 
   testeHelper(
