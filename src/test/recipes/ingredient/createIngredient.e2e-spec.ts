@@ -4,7 +4,7 @@ import test, { before, describe } from "node:test";
 import assert from "node:assert";
 import { clearDatabase } from "@src/test/helper/clearDataBase";
 import createUser from "@src/test/helper/createUser";
-import { createIngredient } from "@src/core/types/Ingredient.types";
+import { IngredientCreate } from "@src/core/types/ingredient/Ingredient.types";
 
 let token1: string;
 let token2: string;
@@ -64,7 +64,7 @@ function testHelper(
   title: string,
   getToken: () => string,
   expectedStatus: number,
-  body: createIngredient,
+  body: IngredientCreate,
 ): void {
   test(title, async () => {
     const token = getToken();

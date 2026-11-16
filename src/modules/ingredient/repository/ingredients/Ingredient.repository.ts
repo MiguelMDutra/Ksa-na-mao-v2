@@ -1,10 +1,10 @@
 import Conflict from "@src/core/errors/Conflict.error";
-import { offsetLimit } from "@src/core/types/auxiliary-types/pagination.types";
+import { OffsetLimit } from "@src/core/types/auxiliary-types/options/pagination.types";
 import {
-  updateIngredient,
-  createIngredient,
-  Ingredient,
-} from "@src/core/types/Ingredient.types";
+  IngredientUpdate,
+  IngredientCreate,
+  IngredientModel,
+} from "@src/core/types/ingredient/Ingredient.types";
 import { WhereOptions } from "sequelize";
 import models from "@src/database/models";
 
@@ -12,18 +12,18 @@ const ingredientModel = models.ingredient;
 
 class IngredientRepo {
   async getMyIngredients(
-    { offset, limit }: offsetLimit,
+    { offset, limit }: OffsetLimit,
     userId: number,
-  ): Promise<Ingredient[]> {
+  ): Promise<IngredientModel[]> {
     return await ingredientModel
       .scope({ method: ["users", userId] })
       .findAll({ offset, limit });
   }
 
   async getAllIngredients(
-    { offset, limit }: offsetLimit,
+    { offset, limit }: OffsetLimit,
     userId: number,
-  ): Promise<Ingredient[]> {
+  ): Promise<IngredientModel[]> {
     const ingredients = await ingredientModel
       .scope({ method: ["available", userId] })
       .findAll({
@@ -34,7 +34,7 @@ class IngredientRepo {
     return ingredients;
   }
 
-  async createIngredient(data: createIngredient): Promise<Ingredient> {
+  async createIngredient(data: IngredientCreate): Promise<IngredientModel> {
     const [ingredient, created] = await ingredientModel.findOrCreate({
       where: { name: data.name, userId: data.userId },
       defaults: {
@@ -51,7 +51,7 @@ class IngredientRepo {
     return ingredient;
   }
 
-  async update(data: updateIngredient, where: WhereOptions): Promise<number> {
+  async update(data: IngredientUpdate, where: WhereOptions): Promise<number> {
     const [affected] = await ingredientModel.update(data, { where });
     return affected;
   }
