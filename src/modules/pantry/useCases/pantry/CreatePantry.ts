@@ -3,7 +3,7 @@ import Conflict from "@src/core/errors/Conflict.error";
 import { PantryCreate } from "@src/core/types/pantry/Pantry.types";
 import { Transaction } from "sequelize";
 import PantryRepository from "../../repository/pantry/Pantry.repository";
-import PantryUsersRepository from "../../repository/pantryUser/Pantry.repository";
+import PantryUsersRepository from "../../repository/pantryUser/PantryUser.repository";
 import models from "@src/database/models";
 const sequelize = models.sequelize;
 const pr = new PantryRepository();
@@ -24,7 +24,7 @@ class CreatePantryClass {
         throw new Conflict("Já existe um estoque com esse nome.");
       }
 
-      await pur.createPantry(
+      await pur.createPantryUser(
         { userId: data.ownerId, pantryId: pantryId },
         transaction,
       );
