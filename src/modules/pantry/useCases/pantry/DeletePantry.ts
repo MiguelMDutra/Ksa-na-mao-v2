@@ -14,14 +14,13 @@ class DeletePantry {
 
     const creatorId = await ph.isUserOwner(id, userId);
 
-    if (!creatorId) {
+    if (!creatorId)
       throw new Forbidden("Você só pode apagar os seus estoques.");
-    }
-    if (howMany > 1) {
+
+    if (howMany === 1)
       throw new BadRequest(
         "Você só pode apagar um estoque se você participa de mais de um.",
       );
-    }
 
     const deleted = await pr.deletePantry(id);
     if (deleted) return { message: "Estoque apagado com sucesso!" };
