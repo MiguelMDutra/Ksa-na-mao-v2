@@ -17,4 +17,12 @@ R.post(
     unitController.createUnit(req, res, next),
 );
 
+R.put(
+  "/units/:unitId",
+  verify,
+  verifyAdmin,
+  (req: Request, res: Response, next: NextFunction) =>
+    unitController.updateUnit(req, res, next),
+);
+
 export default R;

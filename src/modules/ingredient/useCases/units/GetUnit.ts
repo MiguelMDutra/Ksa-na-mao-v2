@@ -1,6 +1,6 @@
 import { WhereOptions } from "sequelize";
 import { UnitModel } from "@src/core/types/ingredient/Unit.types";
-import UnitRepo from "../../repository/units/Ingredient.repository";
+import UnitRepo from "../../repository/units/Unit.repository";
 
 const ur = new UnitRepo();
 

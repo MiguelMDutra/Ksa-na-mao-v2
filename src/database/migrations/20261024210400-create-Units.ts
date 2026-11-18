@@ -3,7 +3,7 @@ import { DataTypes, QueryInterface } from "sequelize";
 export default {
   async up(queryInterface: QueryInterface) {
     await queryInterface.createTable("Units", {
-      id: {
+      unitId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,

@@ -1,7 +1,7 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
 import { UnitCreate, UnitModel } from "@src/core/types/ingredient/Unit.types";
 import { MessageOnly } from "@src/core/types/auxiliary-types/responses/messageOnly";
-import UnitRepo from "../../repository/units/Ingredient.repository";
+import UnitRepo from "../../repository/units/Unit.repository";
 
 const ur = new UnitRepo();
 

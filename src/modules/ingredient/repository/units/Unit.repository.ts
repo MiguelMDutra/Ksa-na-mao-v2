@@ -1,4 +1,8 @@
-import { UnitCreate, UnitModel } from "@src/core/types/ingredient/Unit.types";
+import {
+  UnitCreate,
+  UnitModel,
+  UnitUpdate,
+} from "@src/core/types/ingredient/Unit.types";
 import models from "@src/database/models";
 import { Op, WhereOptions } from "sequelize";
 
@@ -17,6 +21,11 @@ class UnitRepo {
       defaults: { ...data },
     });
     return [unit, created];
+  }
+
+  async updateUnit(data: UnitUpdate, unitId: number): Promise<number> {
+    const [affectedCount] = await unitModel.update(data, { where: { unitId } });
+    return affectedCount;
   }
 }
 export default UnitRepo;

@@ -21,7 +21,7 @@ class Unit extends Model {
 export default (sequelize: Sequelize) => {
   Unit.init(
     {
-      id: {
+      unitId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,

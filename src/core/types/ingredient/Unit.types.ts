@@ -18,3 +18,9 @@ export interface UnitCreate {
   abbreviation: string;
   type: "Solido" | "Liquido";
 }
+
+export interface UnitUpdate {
+  name?: string;
+  abbreviation?: string;
+  type?: "Solido" | "Liquido";
+}

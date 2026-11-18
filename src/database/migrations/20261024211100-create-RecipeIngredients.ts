@@ -22,7 +22,7 @@ export default {
         allowNull: false,
         references: {
           model: "Units",
-          key: "id",
+          key: "unitId",
         },
       },
       ingredientId: {
