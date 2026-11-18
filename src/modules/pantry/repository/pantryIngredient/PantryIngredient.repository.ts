@@ -6,19 +6,20 @@ import {
   PantryIngredientUpdate,
 } from "@src/core/types/pantry/PantryIngredients/PantryIngredient.types";
 import models from "@src/database/models";
-import { Transaction } from "sequelize";
+import { Transaction, WhereOptions } from "sequelize";
 const pantryIngredientModel = models.pantryIngredient;
 
 class PantryIngredientRepository {
   async getPantryIngredients(
-    pantryId: number,
     { offset, limit }: OffsetLimit,
+    where: WhereOptions,
   ): Promise<PantryIngredientModel[]> {
-    return await pantryIngredientModel.findAll({
-      where: { pantryId },
+    const response = await pantryIngredientModel.findAll({
+      where: where,
       offset,
       limit,
     });
+    return response;
   }
 
   async createPantryIngredient(

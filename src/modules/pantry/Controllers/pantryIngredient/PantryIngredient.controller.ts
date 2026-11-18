@@ -4,6 +4,7 @@ import UpdatePantryIngredient from "../../useCases/pantryIngredient/UpdatePantry
 import GetPantryIngredients from "../../useCases/pantryIngredient/GetPantryIngredients";
 import pagination from "@src/helpers/pagination";
 import getParamNumber from "@src/helpers/getParamNumber";
+import createWhere from "@src/helpers/createWhere";
 
 const getPantryIngredients = new GetPantryIngredients();
 const createPantryIngredient = new CreatePantryIngredient();
@@ -14,14 +15,38 @@ class PantryIngredientController {
     const { userId } = req.user!;
     const { pantryId } = req.params;
     const { page, limit } = req.query;
+    const {
+      ingredientId,
+      currentQuantity,
+      minimumQuantity,
+      expirationDate,
+      createdAt,
+      updatedAt,
+      deletedAt,
+    } = req.query;
+
+    const where = createWhere({
+      pantryId: getParamNumber(pantryId),
+      ingredientId,
+      currentQuantity,
+      minimumQuantity,
+      expirationDate,
+      createdAt,
+      updatedAt,
+      deletedAt,
+    });
 
     const response = await getPantryIngredients.execute(
       getParamNumber(pantryId),
       userId,
       {
-        offset: pagination(getParamNumber(page)) - 5,
-        limit: getParamNumber(limit),
+        offset:
+          pagination(getParamNumber(page)) - 5 > 0
+            ? pagination(getParamNumber(page)) - 5
+            : 0,
+        limit: getParamNumber(limit) > 0 ? getParamNumber(limit) : 5,
       },
+      where,
     );
 
     res.status(200).json(response);
