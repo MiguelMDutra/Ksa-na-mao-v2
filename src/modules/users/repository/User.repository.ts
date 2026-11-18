@@ -35,6 +35,7 @@ class UserRepo {
         return {
           userId: user.userId,
           email: user.email,
+          role: user.role,
         };
       } else return null;
     });

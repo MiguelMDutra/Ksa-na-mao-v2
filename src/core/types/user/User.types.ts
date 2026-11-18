@@ -54,6 +54,7 @@ export interface SearchUsers {
 export interface UserBasics {
   userId: number;
   email: string;
+  role: string;
 }
 
 export interface UserBasicsPassword extends UserBasics {
