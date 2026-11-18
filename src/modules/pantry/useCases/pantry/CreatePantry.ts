@@ -11,7 +11,7 @@ const pr = new PantryRepository();
 const pur = new PantryUsersRepository();
 const puh = new PantryUserHelper();
 
-class CreatePantryClass {
+class CreatePantry {
   async execute(data: PantryCreate, t?: Transaction): Promise<boolean> {
     if (!data.name || !data.name.trim()) {
       throw new BadRequest("O estoque precisa de um nome");
@@ -51,4 +51,4 @@ class CreatePantryClass {
   }
 }
 
-export default CreatePantryClass;
+export default CreatePantry;

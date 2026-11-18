@@ -23,7 +23,7 @@ export interface PantryIngredientCreate {
 }
 
 export interface PantryIngredientUpdate {
-  id: number;
+  id?: number;
   pantryId: number;
   ingredientId: number;
   currentQuantity: number;
