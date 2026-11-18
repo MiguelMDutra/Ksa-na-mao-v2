@@ -8,6 +8,9 @@ export class UnitModel extends Model<
   declare name: string;
   declare abbreviation: string;
   declare type: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt: Date;
 }
 
 export interface UnitCreate {

@@ -6,6 +6,9 @@ class Unit extends Model {
   declare name: string;
   declare abbreviation: string;
   declare type: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt: Date;
 
   static associate(models: DatabaseModels) {
     this.hasMany(models.recipeIngredient, {
@@ -36,6 +39,18 @@ export default (sequelize: Sequelize) => {
         type: DataTypes.ENUM("Solido", "Liquido"),
         defaultValue: "Solido",
         allowNull: false,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
       },
     },
     { sequelize, modelName: "Unit", tableName: "Units", paranoid: true },
