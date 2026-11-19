@@ -2,9 +2,9 @@ import models from "@models";
 import NotFound from "@src/core/errors/NotFound.error";
 import { MessageOnly } from "@src/core/types/auxiliary-types/responses/messageOnly";
 import {
-  signUpData,
-  userBasics,
-  userUpdate,
+  SignUpData,
+  UserBasics,
+  UserUpdate,
 } from "@src/core/types/user/User.types";
 
 const sequelize = models.sequelize;
@@ -12,7 +12,7 @@ const userModel = models.user;
 const userChangeTokenModel = models.userChangeToken;
 
 class UserRepo {
-  async signUp(userData: signUpData): Promise<userBasics | null> {
+  async signUp(userData: SignUpData): Promise<UserBasics | null> {
     return await sequelize.transaction(async (t) => {
       const [user, created] = await userModel.findOrCreate({
         where: {
@@ -22,6 +22,7 @@ class UserRepo {
           email: userData.email,
           password: userData.password,
           username: userData.username,
+          role: userData.role,
         },
         transaction: t,
       });
@@ -36,12 +37,13 @@ class UserRepo {
         return {
           userId: user.userId,
           email: user.email,
+          role: user.role,
         };
       } else return null;
     });
   }
 
-  async updateAccount(userId: number, data: userUpdate): Promise<boolean> {
+  async updateAccount(userId: number, data: UserUpdate): Promise<boolean> {
     const user = await userModel.findOne({ where: { userId } });
 
     if (!user) {

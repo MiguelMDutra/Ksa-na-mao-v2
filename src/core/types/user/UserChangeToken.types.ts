@@ -1,4 +1,4 @@
-export interface createUserToken {
+export interface UserTokenCreate {
   userId: number;
   token: string;
   resetEmail: string;

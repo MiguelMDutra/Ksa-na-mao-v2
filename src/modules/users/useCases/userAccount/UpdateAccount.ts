@@ -1,5 +1,5 @@
 import BadRequest from "@src/core/errors/BadRequest.error";
-import { updateData } from "@src/core/types/user/User.types";
+import { UpdateData } from "@src/core/types/user/User.types";
 import UserHelper from "../../repository/User.HELPER";
 const uh = new UserHelper();
 import UserRepo from "../../repository/User.repository";
@@ -7,7 +7,7 @@ import Conflict from "@src/core/errors/Conflict.error";
 const ur = new UserRepo();
 
 class UpdateAccount {
-  static async execute(data: updateData, userId: number): Promise<object> {
+  static async execute(data: UpdateData, userId: number): Promise<object> {
     if (
       data === undefined ||
       (!data.bio?.trim() && !data.name?.trim() && !data.username?.trim())
@@ -20,7 +20,7 @@ class UpdateAccount {
       "name",
       "bio",
       "username",
-    ])) as updateData;
+    ])) as UpdateData;
 
     if (data.username && data.username !== user.username) {
       const usernameExists = await uh.usernameExists(data.username);

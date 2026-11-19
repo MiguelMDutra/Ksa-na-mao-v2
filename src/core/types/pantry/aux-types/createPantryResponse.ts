@@ -1,4 +1,4 @@
-export interface createPantryResponse {
+export interface CreatePantryResponse {
   created: boolean;
   pantryId: number;
 }
