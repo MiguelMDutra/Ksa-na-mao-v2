@@ -8,16 +8,19 @@ export default async (
     username,
     email,
     password,
+    role,
   }: {
     username?: string;
     email?: string;
     password?: string;
+    role?: string;
   },
 ): Promise<string> => {
   const body = {
     username: username ?? "Migus",
     email: email ?? "miguelnewemail@gmail.com",
     password: password ?? "senha123@",
+    role,
   };
 
   const response = await request(app).post("/signUp").send(body).expect(201);

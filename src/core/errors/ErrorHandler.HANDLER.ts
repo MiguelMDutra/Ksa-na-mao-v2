@@ -16,7 +16,6 @@ function ErrorHandler(
     const v = new ValidationErrorClass(err);
     v.response(res);
   } else {
-    console.log(err);
     res.status(500).json({ message: "Erro no servidor" });
   }
 }
