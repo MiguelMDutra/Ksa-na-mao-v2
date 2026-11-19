@@ -1,5 +1,6 @@
 import models from "@models";
 import NotFound from "@src/core/errors/NotFound.error";
+import { MessageOnly } from "@src/core/types/auxiliary-types/responses/messageOnly";
 import {
   SignUpData,
   UserBasics,
@@ -21,6 +22,7 @@ class UserRepo {
           email: userData.email,
           password: userData.password,
           username: userData.username,
+          role: userData.role,
         },
         transaction: t,
       });
@@ -35,6 +37,7 @@ class UserRepo {
         return {
           userId: user.userId,
           email: user.email,
+          role: user.role,
         };
       } else return null;
     });
@@ -67,7 +70,7 @@ class UserRepo {
     updateData: { email?: string; password?: string },
     userId: number,
     tokenId: number,
-  ): Promise<object> {
+  ): Promise<MessageOnly | null> {
     return await sequelize.transaction(async (t) => {
       await userModel.update(updateData, {
         where: { userId: userId },
@@ -75,7 +78,7 @@ class UserRepo {
         individualHooks: true,
       });
 
-      await userChangeTokenModel.update(
+      const isUpdated = await userChangeTokenModel.update(
         { used: true },
         {
           where: { id: tokenId },
@@ -83,16 +86,20 @@ class UserRepo {
         },
       );
 
-      return {
-        message: "Conta atualizada com sucesso!",
-      };
+      if (isUpdated[0] > 0)
+        return {
+          message: "Conta atualizada com sucesso!",
+        };
+      else return null;
     });
   }
 
-  async DeactivateAccount(userId: number): Promise<void> {
-    await userModel.destroy({
+  async DeactivateAccount(userId: number): Promise<boolean> {
+    const rowsDeleted = await userModel.destroy({
       where: { userId: userId },
     });
+    if (rowsDeleted > 0) return true;
+    return false;
   }
 }
 

@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import PantryController from "../Controllers/Pantry.controller";
+import PantryController from "../Controllers/pantry/Pantry.controller";
 import verify from "@src/core/jwt/verifyToken";
 
 const R = express.Router();

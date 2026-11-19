@@ -1,8 +1,13 @@
+import { PantryModel } from "@src/core/types/pantry/Pantry.types";
 import models from "@src/database/models";
 
 const pantryModel = models.pantry;
 
 class PantryHelper {
+  async pantryExists(id: number): Promise<PantryModel | null> {
+    return await pantryModel.findByPk(id);
+  }
+
   async isUserOwner(id: number, userId: number): Promise<boolean> {
     const isOwner = await pantryModel.findOne({
       where: { pantryId: id, ownerId: userId },

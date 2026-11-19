@@ -25,6 +25,7 @@ export interface SignUpData {
   username: string;
   email: string;
   password: string;
+  role: string;
 }
 
 export type UserUpdate = Partial<
@@ -54,6 +55,7 @@ export interface SearchUsers {
 export interface UserBasics {
   userId: number;
   email: string;
+  role: string;
 }
 
 export interface UserBasicsPassword extends UserBasics {
